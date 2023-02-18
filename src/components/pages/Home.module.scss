@@ -1,0 +1,142 @@
+// Isso é só um exemplo, excluir o arquivo depois
+
+.SwitchRoot {
+  width: 42px;
+  height: 25px;
+  background-color: rosybrown;
+  border-radius: 9999px;
+  position: relative;
+  box-shadow: 0 2px 10px lightgrey;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+.SwitchRoot:focus {
+  box-shadow: 0 0 0 2px black;
+}
+.SwitchRoot[data-state='checked'] {
+  background-color: black;
+}
+
+.SwitchThumb {
+  display: block;
+  width: 21px;
+  height: 21px;
+  background-color: white;
+  border-radius: 9999px;
+  box-shadow: 0 2px 2px lightgray;
+  transition: transform 100ms;
+  transform: translateX(2px);
+  will-change: transform;
+}
+.SwitchThumb[data-state='checked'] {
+  transform: translateX(19px);
+}
+
+.Label {
+  color: rosybrown;
+  font-size: 15px;
+  line-height: 1;
+}
+
+// Header
+.header {
+  align-items: center;
+  display: flex;
+  height: 8rem;
+
+  &__cart {
+    margin-inline-start: auto;
+  }
+}
+
+.menu {
+  &__links {
+    align-items: baseline;
+    display: flex;
+    gap: clamp(1.6rem, 1vw, 2.4rem);
+  }
+
+  &__item {
+    align-items: baseline;
+    display: flex;
+    gap: .8rem;
+  }
+
+  &__trigger {
+    @media (width > 37.5em) {
+      display: none;
+    }
+  }
+}
+
+
+// Product List
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(25rem, 30ch), 30%));
+  gap: clamp(4rem, 3vw, 6rem);
+  padding-block: 1.6rem;
+  padding-inline: 1.6rem;
+  place-content: center;
+}
+
+.product {
+  color: #642C99;
+  display: grid;
+  gap: clamp(1.6rem, 1vw, 2.4rem);
+  justify-items: center;
+  text-align: center;
+
+  &__description {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+  gap: clamp(1.6rem, 1vw, 4rem);
+}
+
+.controls {
+  border: .2rem solid;
+  border-radius: .8rem;
+  display: grid;
+  font-weight: 600;
+  grid-template-columns: repeat(3, minmax(2.4rem, 5rem));
+  padding-block: .8rem;
+  padding-inline: .8rem;
+
+  /* Chrome, Safari, Edge, Opera */
+  > input::-webkit-outer-spin-button,
+  > input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  > input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+  > button {
+    cursor: pointer;
+  }
+}
+
+.cta {
+  background-color: #642C99;
+  border-radius: .8rem;
+  color: #FBFAC9;
+  cursor: pointer;
+  font-weight: 500;
+  padding-block: .8rem;
+  padding-inline: .8rem;
+  text-transform: uppercase;
+}

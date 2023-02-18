@@ -1,0 +1,20 @@
+@use "./reset";
+
+body {
+  background-color: #F7CFDA;
+  color: #642C99;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.6rem, 2vw, 2.2rem);
+  margin: auto;
+  max-inline-size: 144rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Unbounded', cursive;
+  font-weight: 900;
+}
