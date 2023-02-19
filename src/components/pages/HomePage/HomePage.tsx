@@ -3,7 +3,8 @@ import { useQuery } from "react-query";
 import axios from 'axios'
 import styles from "./HomePage.module.scss"
 import { AlignLeftTwo, CakeFour, ShoppingCartOne } from "@icon-park/react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 export default function HomePage() {
   // const { data: response, isLoading } = useQuery('products', async () => await axios.get('http://localhost:3001/api/products '))
@@ -14,23 +15,39 @@ export default function HomePage() {
     return homeProducts
   })
 
+  const [open, setOpen] = useState(false)
+  const location = useLocation()
+
   if (isLoading) return <h1>Loading...</h1>
 
   return (
     <>
       <header className={styles.header}>
         <nav className={styles.menu}>
-          <section role="button" className={styles.menu__trigger}>
+          <section
+            role="button"
+            className={styles.menu__trigger}
+            onClick={() => setOpen(!open)}
+          >
             <AlignLeftTwo />
           </section>
-          <ul className={styles.menu__links}>
-            <li className={styles.menu__item}>
-              <CakeFour theme="multi-color" size="24" fill={['#642C99' ,'#642C99' ,'#FBFACA' ,'#FBFACA']}/>
-              <p>Home</p>
-            </li>
-            <li>Shop</li>
-            <li>Our story</li>
-            <li>Why Miss Cupcake</li>
+          <ul className={`${styles.menu__links} ${open ? styles['open'] : ''}`}>
+            <li
+              id="home"
+              className={`${styles.menu__item} ${location.pathname === '/' ? styles['active'] : ''}`}
+            >
+              <CakeFour theme="multi-color" fill={['#642C99' ,'#642C99' ,'#FBFACA' ,'#FBFACA']}/>
+              <p>Home</p></li>
+            <li
+              id="shop"
+              className={`${styles.menu__item} ${location.pathname === '/shop' ? 'active' : ''}`}
+            >Shop</li>
+            <li
+              id="story"
+              className={`${styles.menu__item} ${location.pathname === '/story' ? 'active' : ''}`}>Our story</li>
+            <li
+              id="why"
+              className={`${styles.menu__item} ${location.pathname === '/why' ? 'active' : ''}`}>Why Miss Cupcake</li>
           </ul>
         </nav>
         <figure role="button" className={styles.header__cart}>
@@ -38,21 +55,6 @@ export default function HomePage() {
         </figure>
       </header>
 
-
-      <h1>Home Page</h1>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <label className={styles.Label} htmlFor="airplane-mode" style={{ paddingRight: 15 }}>
-          Airplane mode
-        </label>
-        <Switch.Root className={styles.SwitchRoot} id="airplane-mode">
-          <Switch.Thumb className={styles.SwitchThumb} />
-        </Switch.Root>
-      </div>
-      <ul>
-        <li>Radix UI</li>
-        <li>Sass</li>
-        <li>CSS (Sass) Modules</li>
-      </ul>
       <section className={styles.products}>
         {data?.map((product: any) => {
           return (

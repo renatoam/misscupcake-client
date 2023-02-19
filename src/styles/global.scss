@@ -7,6 +7,8 @@ body {
   font-size: clamp(1.6rem, 2vw, 2.2rem);
   margin: auto;
   max-inline-size: 144rem;
+  padding-block: 1.6rem;
+  padding-inline: 1.6rem;
 }
 
 h1,
@@ -17,4 +19,11 @@ h5,
 h6 {
   font-family: 'Unbounded', cursive;
   font-weight: 900;
+}
+
+.i-icon {
+  > svg {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
 }
