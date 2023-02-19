@@ -1,12 +1,13 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
-import HomePage from './components/pages/HomePage';
+import { RouterProvider } from 'react-router-dom';
+import router from './router';
 
 const queryClient = new QueryClient()
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <HomePage />
+      <RouterProvider router={router} />
     </QueryClientProvider>
   )
 }

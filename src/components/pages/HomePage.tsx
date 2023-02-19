@@ -56,11 +56,16 @@ export default function HomePage() {
         {data?.map((product: any) => {
           return (
             <section key={product.id} className={styles.product}>
-              <figure>
+              <figure className={styles.product__image}>
                 <img src={product.product_image[0].image_url} alt={product.name} />
               </figure>
               <h2>{product.name}</h2>
-              <p className={styles.product__description}>{product.description}</p>
+              <p
+                className={styles.product__description}
+                title={product.description} 
+              >
+                {product.description}
+              </p>
               <section className={styles.actions}>
                 <section className={styles.controls}>
                   <button>-</button>

@@ -88,6 +88,20 @@
   justify-items: center;
   text-align: center;
 
+  &__image {
+    @media (width > 37.5em) {    
+      img {
+        transition: all .2s ease-in-out;
+      }
+
+      &:hover {
+        img {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
   &__description {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
