@@ -1,8 +1,9 @@
 import * as Switch from "@radix-ui/react-switch";
 import { useQuery } from "react-query";
 import axios from 'axios'
-import styles from "./Home.module.scss"
+import styles from "./HomePage.module.scss"
 import { AlignLeftTwo, CakeFour, ShoppingCartOne } from "@icon-park/react";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   // const { data: response, isLoading } = useQuery('products', async () => await axios.get('http://localhost:3001/api/products '))
@@ -56,16 +57,18 @@ export default function HomePage() {
         {data?.map((product: any) => {
           return (
             <section key={product.id} className={styles.product}>
-              <figure className={styles.product__image}>
-                <img src={product.product_image[0].image_url} alt={product.name} />
-              </figure>
-              <h2>{product.name}</h2>
-              <p
-                className={styles.product__description}
-                title={product.description} 
-              >
-                {product.description}
-              </p>
+              <Link to={`/product/${product.id}`}>
+                <figure className={styles.product__image}>
+                  <img src={product.product_image[0].image_url} alt={product.name} />
+                </figure>
+                <h2>{product.name}</h2>
+                <p
+                  className={styles.product__description}
+                  title={product.description} 
+                >
+                  {product.description}
+                </p>
+              </Link>
               <section className={styles.actions}>
                 <section className={styles.controls}>
                   <button>-</button>
