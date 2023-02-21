@@ -1,4 +1,3 @@
-import * as Switch from "@radix-ui/react-switch";
 import { useQuery } from "react-query";
 import axios from 'axios'
 import styles from "./HomePage.module.scss"
@@ -55,7 +54,6 @@ export default function HomePage() {
           <ShoppingCartOne />
         </figure>
       </header>
-
       <section role="banner" className={styles.hero}>
         <section className={styles.hero__text}>
           <h1 className={styles.hero__title}>Miss<br />Cupcake</h1>
