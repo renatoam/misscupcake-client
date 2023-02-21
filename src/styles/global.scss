@@ -5,10 +5,7 @@ body {
   color: #642C99;
   font-family: 'Montserrat', sans-serif;
   font-size: clamp(1.6rem, 2vw, 2.2rem);
-  margin: auto;
-  max-inline-size: 144rem;
-  padding-block: 1.6rem;
-  padding-inline: 1.6rem;
+  overflow-x: hidden;
 }
 
 h1,

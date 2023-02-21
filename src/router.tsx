@@ -5,7 +5,7 @@ import ProductDetailsPage from "./components/pages/ProductDetailsPage/ProductDet
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <main><Outlet /></main>,
+    element: <><Outlet /></>,
     children: [
       {
         index: true,

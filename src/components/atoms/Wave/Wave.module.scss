@@ -1,0 +1,16 @@
+.wrapper {
+  position: absolute;
+  top: -16rem;
+  left: 0;
+  z-index: -1;
+}
+
+.wave {
+  max-width: none;
+  max-inline-size: none;
+
+  > img {
+    max-width: none;
+    max-inline-size: none;
+  }
+}

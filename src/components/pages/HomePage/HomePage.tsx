@@ -5,6 +5,7 @@ import styles from "./HomePage.module.scss"
 import { AlignLeftTwo, CakeFour, ShoppingCartOne } from "@icon-park/react";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
+import Wave from "../../atoms/Wave/Wave";
 
 export default function HomePage() {
   // const { data: response, isLoading } = useQuery('products', async () => await axios.get('http://localhost:3001/api/products '))
@@ -21,7 +22,7 @@ export default function HomePage() {
   if (isLoading) return <h1>Loading...</h1>
 
   return (
-    <>
+    <main className={styles.main}>
       <header className={styles.header}>
         <nav className={styles.menu}>
           <section
@@ -55,6 +56,28 @@ export default function HomePage() {
         </figure>
       </header>
 
+      <section role="banner" className={styles.hero}>
+        <section className={styles.hero__text}>
+          <h1 className={styles.hero__title}>Miss<br />Cupcake</h1>
+          <p className={styles.hero__description}>We are proud to offer cupcakes and cakes that are freshly baked within hours, if not minutes, for your enjoyment.</p>
+          <button className={styles.hero__button}>Shop now</button>
+        </section>
+        <figure className={styles.hero__image}>
+          <picture>
+            <source srcSet="https://res.cloudinary.com/otaner/image/upload/v1676911831/cupcake/hero-image-mob-avif.avif 600w, https://res.cloudinary.com/otaner/image/upload/v1676907341/cupcake/hero-image-tab-avif.avif 960w, https://res.cloudinary.com/otaner/image/upload/v1676907341/cupcake/hero-image-desk-avif.avif 1600w" sizes="(max-width: 600px) 600px, (max-width: 1024px) 960px,(min-width: 1025px) 1600px" type="image/avif" />
+            <source srcSet="https://res.cloudinary.com/otaner/image/upload/v1676911831/cupcake/hero-image-mob-webp.webp 600w, https://res.cloudinary.com/otaner/image/upload/v1676907341/cupcake/hero-image-tab-webp.webp 960w, https://res.cloudinary.com/otaner/image/upload/v1676907341/cupcake/hero-image-desk-webp.webp 1600w" sizes="(max-width: 600px) 600px, (max-width: 1024px) 960px,(min-width: 1025px) 1600px" type="image/webp" />
+            <img src="https://res.cloudinary.com/otaner/image/upload/v1676911831/cupcake/hero-image-desk-png.png" alt="Cupcakes falling" />
+          </picture>
+        </figure>
+      </section>
+      <Wave />
+
+      <section className={styles.why}>
+        <h2 className={styles.why__title}>The Simple,<br />Sweet Life</h2>
+        <p className={styles.why__description}>Our cupcakes are always made with the finest ingredients, creating a spark that makes your taste buds dance. You'll want to indulge in each and every decadent flavor.</p>
+        <button className={styles.why__button}>Why Miss Cupcake</button>
+      </section>
+
       <section className={styles.products}>
         {data?.map((product: any) => {
           return (
@@ -83,6 +106,6 @@ export default function HomePage() {
           )
         })}
       </section>
-    </>
+    </main>
   )
 }
