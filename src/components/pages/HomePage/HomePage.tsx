@@ -63,6 +63,9 @@ export default function HomePage() {
           <button className={styles.hero__button}>Shop now</button>
         </section>
         <figure className={styles.hero__image}>
+          {/* Criar um componente que receba um array de objetos (source) e cujo srcSet prop seja um array de objetos tambem
+            A base url deve ser dinâmica
+          */}
           <picture>
             <source srcSet="https://res.cloudinary.com/otaner/image/upload/v1676911831/cupcake/hero-image-mob-avif.avif 600w, https://res.cloudinary.com/otaner/image/upload/v1676907341/cupcake/hero-image-tab-avif.avif 960w, https://res.cloudinary.com/otaner/image/upload/v1676907341/cupcake/hero-image-desk-avif.avif 1600w" sizes="(max-width: 600px) 600px, (max-width: 1024px) 960px,(min-width: 1025px) 1600px" type="image/avif" />
             <source srcSet="https://res.cloudinary.com/otaner/image/upload/v1676911831/cupcake/hero-image-mob-webp.webp 600w, https://res.cloudinary.com/otaner/image/upload/v1676907341/cupcake/hero-image-tab-webp.webp 960w, https://res.cloudinary.com/otaner/image/upload/v1676907341/cupcake/hero-image-desk-webp.webp 1600w" sizes="(max-width: 600px) 600px, (max-width: 1024px) 960px,(min-width: 1025px) 1600px" type="image/webp" />

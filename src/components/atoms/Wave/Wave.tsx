@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styles from './Wave.module.scss'
 
 type CSSColors = 'red' | 'yellow' | 'green' | 'cyan' | 'blue' | 'magenta'
