@@ -1,5 +1,13 @@
 @use "./reset";
 
+@font-face {
+  font-display: swap;
+  font-family: 'Unbounded';
+  font-weight: bolder;
+  src: url('https://res.cloudinary.com/otaner/raw/upload/v1677083791/fonts/unbounded-variable.woff2') format('woff2');
+  unicode-range: U+20-24F;
+}
+
 body {
   background-color: #F7CFDA;
   color: #642C99;
@@ -14,8 +22,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Unbounded', cursive;
-  font-weight: 900;
+  font-family: 'Unbounded', system-ui, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: bolder;
 }
 
 .i-icon {
