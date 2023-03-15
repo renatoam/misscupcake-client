@@ -1,17 +1,18 @@
-import axios from 'axios';
-import { useState } from "react";
-import { useQuery } from "react-query";
-import { Link, useLocation } from "react-router-dom";
+import { lazy, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Container from '../../atoms/Container/Container';
 import styles from "./HomePage.module.scss";
+import LazyLoader from "./lazy";
+
+const Featured = lazy(() => import('./temporary'))
 
 export default function HomePage() {
-  const { data, isLoading } = useQuery('homeProducts', async () => {
-    const response = await axios.get('https://cupcake.cyclic.app/api/featured')
-    return response.data
-  })
-
   const [open, setOpen] = useState(false)
+  const [blur, setBlur] = useState({
+    avif: 'w_430/e_blur:1000,q_1,f_avif/',
+    webp: 'w_430/e_blur:1000,q_1,f_webp/',
+    png: 'w_430/e_blur:1000,q_1,f_png/',
+  })
   const location = useLocation()
 
   return (
@@ -58,13 +59,10 @@ export default function HomePage() {
             <button className={styles.hero__button}>Shop now</button>
           </section>
           <figure className={styles.hero__image}>
-            {/* Criar um componente que receba um array de objetos (source) e cujo srcSet prop seja um array de objetos tambem
-              A base url deve ser dinâmica
-            */}
-            <picture>
-              <source srcSet="https://res.cloudinary.com/otaner/image/upload/v1676911831/cupcake/hero-image-mob-avif.avif 600w, https://res.cloudinary.com/otaner/image/upload/v1676907341/cupcake/hero-image-tab-avif.avif 960w, https://res.cloudinary.com/otaner/image/upload/v1676907341/cupcake/hero-image-desk-avif.avif 1600w" sizes="(max-width: 600px) 600px, (max-width: 1024px) 960px,(min-width: 1025px) 1600px" type="image/avif" />
-              <source srcSet="https://res.cloudinary.com/otaner/image/upload/v1676911831/cupcake/hero-image-mob-webp.webp 600w, https://res.cloudinary.com/otaner/image/upload/v1676907341/cupcake/hero-image-tab-webp.webp 960w, https://res.cloudinary.com/otaner/image/upload/v1676907341/cupcake/hero-image-desk-webp.webp 1600w" sizes="(max-width: 600px) 600px, (max-width: 1024px) 960px,(min-width: 1025px) 1600px" type="image/webp" />
-              <img src="https://res.cloudinary.com/otaner/image/upload/v1676911831/cupcake/hero-image-desk-png.png" alt="Cupcakes falling" width={530} height={710} />
+            <picture onLoad={() => setBlur({ avif: '', webp: '', png: '' })}>
+              <source srcSet={`https://res.cloudinary.com/otaner/image/upload/cupcake/hero-image-mob-avif.avif 600w, https://res.cloudinary.com/otaner/image/upload/cupcake/hero-image-tab-avif.avif 960w, https://res.cloudinary.com/otaner/image/upload/cupcake/hero-image-desk-avif.avif 1600w`} sizes="(max-width: 600px) 600px, (max-width: 1024px) 960px,(min-width: 1025px) 1600px" type="image/avif" />
+              <source srcSet={`https://res.cloudinary.com/otaner/image/upload/cupcake/hero-image-mob-webp.webp 600w, https://res.cloudinary.com/otaner/image/upload/cupcake/hero-image-tab-webp.webp 960w, https://res.cloudinary.com/otaner/image/upload/cupcake/hero-image-desk-webp.webp 1600w`} sizes="(max-width: 600px) 600px, (max-width: 1024px) 960px,(min-width: 1025px) 1600px" type="image/webp" />
+              <img src={`https://res.cloudinary.com/otaner/image/upload/${blur.png}cupcake/hero-image-desk-png.png`} alt="Cupcakes falling" width={530} height={710} />
             </picture>
           </figure>
         </Container>
@@ -73,13 +71,14 @@ export default function HomePage() {
       <section className={styles.why}>
         <Container className={styles.why__container}>
           <figure className={styles.why__image}>
-            {/* Criar no componente de image uma concatenação sem public, se for dev env */}
             <img
-              src="https://res.cloudinary.com/otaner/image/upload/v1677005043/cupcake/split-cupcake-desk-avif.avif"
+              onLoad={() => setBlur({ avif: '', webp: '', png: '' })}
+              src={`https://res.cloudinary.com/otaner/image/upload/${blur.avif}cupcake/split-cupcake-desk-avif.avif`}
               alt="Split cupcake"
               loading="lazy"
               width={430}
               height={530}
+              decoding="async"
             />
           </figure>
           <section className={styles.why__text}>
@@ -90,45 +89,9 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section className={styles.featured}>
-        <Container className={styles.featured__container}>
-          <h2>Make your day a little sweeter</h2>
-          {isLoading ? <h1>Loading...</h1> : <section className={styles.products}>
-            {data?.map((product: any) => {
-              return (
-                <section key={product.id} className={styles.product}>
-                  <Link to={`/product/${product.id}`}>
-                    <figure className={styles.product__image}>
-                      <img
-                        src={product.images[0]}
-                        alt={product.name}
-                        loading="lazy"
-                        width={225}
-                        height={245}
-                      />
-                    </figure>
-                    <h2>{product.name}</h2>
-                    <p
-                      className={styles.product__description}
-                      title={product.description} 
-                    >
-                      {product.description}
-                    </p>
-                  </Link>
-                  <section className={styles.actions}>
-                    <section className={styles.controls}>
-                      <button>-</button>
-                      <input type="number" defaultValue={10} />
-                      <button>+</button>
-                    </section>
-                    <button className={styles.cta}>Add to Cart</button>
-                  </section>
-                </section>
-              )
-            })}
-          </section>}
-        </Container>
-      </section>
+      <LazyLoader>
+        <Featured />
+      </LazyLoader>
     </main>
   )
 }

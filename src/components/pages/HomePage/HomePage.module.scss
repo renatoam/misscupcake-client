@@ -29,7 +29,7 @@ $container-width: max(144rem, 80vw);
 
 // main
 .main {
-  background-image: linear-gradient(to bottom, #F7CFDA, #F7CFDA 50%, #EFFBE2, #EFFBE2 50%);
+  background-image: linear-gradient(to bottom, #F7CFDA, #F7CFDA 60%, #EFFBE2, #EFFBE2 50%);
   padding-block: 1.6rem;
   padding-inline: 1.6rem;
 }
@@ -253,11 +253,20 @@ $container-width: max(144rem, 80vw);
   }
 
   &__image {
-    @media (width > 37.5em) {    
-      img {
-        transition: all .2s ease-in-out;
-      }
+    position: relative;
 
+    img {
+      opacity: 1;
+      transition: all .6s ease-in-out;
+    }
+
+    &.loading {
+      img {
+        opacity: 0;
+      }
+    }
+
+    @media (width > 37.5em) {    
       &:hover {
         img {
           transform: scale(1.1);
@@ -310,4 +319,17 @@ $container-width: max(144rem, 80vw);
 
 .cta {
   @extend .button;
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: all 0.4s ease-in-out;
+  opacity: 0;
+  filter: blur(16px);
+
+  &.loading {
+    opacity: 1;
+  }
 }
