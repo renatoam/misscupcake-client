@@ -17,6 +17,7 @@ export default function Featured() {
     setPlaceholder('')
   }
 
+  // ESTRATEGIA DO PLACEHOLDER SOMENTE PRA IMAGENS ORIUNDAS DO SERVIDOR
   return (
     <section className={styles.featured}>
       <Container className={styles.featured__container}>

@@ -1,0 +1,13 @@
+.nav {
+  &__item {
+    display: block;
+  }
+
+  &__link {
+    height: 100%;
+  }
+
+  &__text {
+    display: flex;
+  }
+}
