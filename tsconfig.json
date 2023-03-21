@@ -22,6 +22,6 @@
     }
   },
   "include": ["src", "native.d.ts"],
-  "exclude": ["public"],
+  "exclude": ["public", "*.test.*"],
   "references": [{ "path": "./tsconfig.node.json" }],
 }
