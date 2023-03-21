@@ -12,18 +12,8 @@ body {
   background-color: #F7CFDA;
   color: #642C99;
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(1.6rem, 2vw, 2.2rem);
+  font-size: clamp(1.6rem, 2vw + .1rem, 2.2rem);
   overflow-x: hidden;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Unbounded', system-ui, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: bolder;
 }
 
 .i-icon {

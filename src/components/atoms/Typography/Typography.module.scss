@@ -1,0 +1,15 @@
+.typography {  
+  @media (width > 37.5em) {
+    max-inline-size: 50ch;
+  }
+
+  &.h1,
+  &.h2,
+  &.h3,
+  &.h4,
+  &.h5,
+  &.h6 {
+    font-family: 'Unbounded', system-ui, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bolder;
+  }
+}

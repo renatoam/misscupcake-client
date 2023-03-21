@@ -11,10 +11,10 @@ export default function Icon(props: IconProps) {
   } : {}
 
   return (
-    <section {...iconButtonProps} className={`${styles['icon-button']} ${className}`}>
+    <i {...iconButtonProps} className={`${styles['icon-button']} ${className}`}>
       <AccessibleIcon.Root label={label}>
         <FontAwesomeIcon icon={icon} className={styles.icon} />
       </AccessibleIcon.Root>
-    </section>
+    </i>
   )
 }

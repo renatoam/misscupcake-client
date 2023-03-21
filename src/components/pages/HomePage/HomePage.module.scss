@@ -46,10 +46,6 @@ $container-width: max(144rem, 80vw);
 
   &__text {
     padding-block-start: 5.6rem;
-
-    @media (width > 37.5em) {
-      max-inline-size: 45ch;
-    }
   }
 
   &__title {

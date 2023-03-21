@@ -1,4 +1,5 @@
 import Container from '@/components/atoms/Container/Container';
+import Typography from '@/components/atoms/Typography';
 import Header from '@/components/organisms/header/Header';
 import { lazy, useState } from "react";
 import styles from "./HomePage.module.scss";
@@ -19,8 +20,8 @@ export default function HomePage() {
       <section role="banner" className={styles.hero}>
         <Container className={styles.hero__container}>
           <section className={styles.hero__text}>
-            <h1 className={styles.hero__title}>Miss<br />Cupcake</h1>
-            <p className={styles.hero__description}>We are proud to offer cupcakes and cakes that are freshly baked within hours, if not minutes, for your enjoyment.</p>
+            <Typography element="h1" className={styles.hero__title}>Miss<br />Cupcake</Typography>
+            <Typography element="p" className={styles.hero__description}>We are proud to offer cupcakes and cakes that are freshly baked within hours, if not minutes, for your enjoyment.</Typography>
             <button className={styles.hero__button}>Shop now</button>
           </section>
           <figure className={styles.hero__image}>
@@ -47,8 +48,8 @@ export default function HomePage() {
             />
           </figure>
           <section className={styles.why__text}>
-            <h2 className={styles.why__title}>The Simple,<br />Sweet Life</h2>
-            <p className={styles.why__description}>Our cupcakes are always made with the finest ingredients, creating a spark that makes your taste buds dance. You'll want to indulge in each and every decadent flavor.</p>
+            <Typography element="h2" className={styles.why__title}>The Simple,<br />Sweet Life</Typography>
+            <Typography element="p" className={styles.why__description}>Our cupcakes are always made with the finest ingredients, creating a spark that makes your taste buds dance. You'll want to indulge in each and every decadent flavor.</Typography>
             <button className={styles.why__button}>Why Miss Cupcake</button>
           </section>
         </Container>

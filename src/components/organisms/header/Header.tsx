@@ -2,6 +2,7 @@ import Container from '@/components/atoms/Container/Container';
 import Icon from '@/components/atoms/Icon/Icon';
 import Nav from '@/components/atoms/Nav/Nav';
 import NavItem from '@/components/atoms/NavItem';
+import Typography from '@/components/atoms/Typography';
 import Wrapper from '@/components/atoms/Wrapper';
 import { links } from '@/constants/navigation';
 import { faBars, faCartShopping, faHouseChimneyWindow } from '@fortawesome/free-solid-svg-icons';
@@ -38,15 +39,18 @@ export default function Header() {
                   href={item.link}
                   className={`${styles.menu__item} ${isActive(item.link)}`}
                 >
-                  {index === 0 ? (
-                    <>
-                      <Icon
-                        label="home"
-                        icon={faHouseChimneyWindow}
-                      />
-                      <p>{item.text}</p>
-                    </>
-                  ) : item.text}
+                  <Typography element="span">
+                    {index > 0 ? item.text : (
+                      <>
+                        <Icon
+                          label="home"
+                          icon={faHouseChimneyWindow}
+                        />
+                        {item.text}
+                      </>
+                      )
+                    }
+                  </Typography>
                 </NavItem>
               )
             })}

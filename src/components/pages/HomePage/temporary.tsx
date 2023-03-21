@@ -1,3 +1,4 @@
+import Typography from "@/components/atoms/Typography"
 import axios from "axios"
 import { useState } from "react"
 import { useQuery } from "react-query"
@@ -21,7 +22,7 @@ export default function Featured() {
   return (
     <section className={styles.featured}>
       <Container className={styles.featured__container}>
-        <h2>Make your day a little sweeter</h2>
+        <Typography element="h2">Make your day a little sweeter</Typography>
         <section className={styles.products}>
           {data?.map((product: any) => {
             return (
@@ -41,13 +42,13 @@ export default function Featured() {
                       onLoad={handleLoad}
                     />
                   </figure>
-                  <h2>{product.name}</h2>
-                  <p
+                  <Typography element="h2">{product.name}</Typography>
+                  <Typography element="p"
                     className={styles.product__description}
                     title={product.description} 
                   >
                     {product.description}
-                  </p>
+                  </Typography>
                 </Link>
                 <section className={styles.actions}>
                   <section className={styles.controls}>
