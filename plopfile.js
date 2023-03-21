@@ -37,7 +37,7 @@ export default function (plop) {
         },
         {
           type: 'add',
-          path: 'src/components/atoms/{{name}}/{{name}}.test.ts',
+          path: 'src/components/atoms/{{name}}/{{name}}.test.tsx',
           templateFile: 'templates/tests.hbs'
         },
       ]
