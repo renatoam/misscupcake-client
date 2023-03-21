@@ -8,7 +8,8 @@
     "build": "node upload.js && tsc && vite build",
     "preview": "vite preview",
     "upload": "node upload.js",
-    "plop": "plop"
+    "plop": "plop",
+    "test": "vitest"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
