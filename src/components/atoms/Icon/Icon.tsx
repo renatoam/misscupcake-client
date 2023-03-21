@@ -11,7 +11,11 @@ export default function Icon(props: IconProps) {
   } : {}
 
   return (
-    <i {...iconButtonProps} className={`${styles['icon-button']} ${className}`}>
+    <i
+      aria-label="icon"
+      className={`${styles['icon-button']} ${className}`}
+      {...iconButtonProps}
+    >
       <AccessibleIcon.Root label={label}>
         <FontAwesomeIcon icon={icon} className={styles.icon} />
       </AccessibleIcon.Root>
