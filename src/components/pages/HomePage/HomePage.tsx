@@ -1,7 +1,7 @@
 import Container from '@/components/atoms/Container/Container';
 import Typography from '@/components/atoms/Typography';
 import Header from '@/components/organisms/header/Header';
-import { lazy, useState } from "react";
+import { Fragment, lazy, useState } from "react";
 import styles from "./HomePage.module.scss";
 import LazyLoader from "./lazy";
 
@@ -14,6 +14,17 @@ export default function HomePage() {
     png: 'w_430/e_blur:1000,q_1,f_png/',
   })
 
+  const [editable, setEditable] = useState(false)
+  const [content, setContent] = useState('We are proud to offer cupcakes and cakes that are freshly baked within hours, if not minutes, for your enjoyment.')
+
+  function handleEditing(event: any) {
+    console.log('Blur', event.target.textContent)
+    setContent(event.target.textContent)
+    setEditable(false)
+  }
+
+  const Wrapping = editable ? 'div' : Fragment
+
   return (
     <main className={styles.main}>
       <Header />
@@ -21,8 +32,25 @@ export default function HomePage() {
         <Container className={styles.hero__container}>
           <section className={styles.hero__text}>
             <Typography element="h1" className={styles.hero__title}>Miss<br />Cupcake</Typography>
-            <Typography element="p" className={styles.hero__description}>We are proud to offer cupcakes and cakes that are freshly baked within hours, if not minutes, for your enjoyment.</Typography>
-            <button className={styles.hero__button}>Shop now</button>
+
+            <Typography
+              contentEditable={editable}
+              onBlur={handleEditing}
+              element="p"
+              className={styles.hero__description}
+            >
+              <Wrapping style={{ border: editable ? '1px solid' : '' }}>
+                {content}
+              </Wrapping>
+            </Typography>
+
+            <button
+              className={styles.hero__button}
+              disabled={editable}
+              onClick={() => setEditable(true)}
+              style={{ backgroundColor: editable ? '#caa0f1' : '#a046f5'}}
+            >Edit</button>
+            {/* <button className={styles.hero__button}>Shop now</button> */}
           </section>
           <figure className={styles.hero__image}>
             <picture onLoad={() => setBlur({ avif: '', webp: '', png: '' })}>
