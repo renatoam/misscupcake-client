@@ -1,5 +1,3 @@
-import { WithChildren } from "../../../protocols/common";
-
-export interface ContainerProps extends WithChildren {
+export interface ContainerProps {
   className?: string
 }

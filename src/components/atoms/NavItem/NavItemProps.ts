@@ -1,6 +1,4 @@
-import { WithChildren } from "@/protocols/common";
-
-export interface NavItemProps extends WithChildren {
+export interface NavItemProps {
   href?: string
   className?: string
 }

@@ -1,6 +1,3 @@
-import { WithChildren } from "@/protocols/common";
-
-export interface WrapperProps extends WithChildren {
+export interface WrapperProps extends NativeElement {
   element: keyof HTMLElementTagNameMap
-  className?: string
 }
