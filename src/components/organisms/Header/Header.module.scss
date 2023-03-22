@@ -1,0 +1,11 @@
+.header {
+  &__container {
+    align-items: center;
+    display: flex;
+    height: 8rem;
+  }
+
+  &__cart {
+    margin-inline-start: auto;
+  }
+}
