@@ -1,5 +1,5 @@
 import { Container, Typography } from '@/components/atoms';
-import Header from '@/components/organisms/Header/Header';
+import { Header } from '@/components/organisms';
 import { Fragment, lazy, useState } from "react";
 import styles from "./HomePage.module.scss";
 import LazyLoader from "./lazy";
