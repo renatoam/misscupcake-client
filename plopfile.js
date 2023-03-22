@@ -1,11 +1,17 @@
 export default function (plop) {
-  plop.setGenerator('atom', {
-      description: '[Atom] Create Atomic Component',
+  plop.setGenerator('component', {
+      description: 'Create Atomic Component',
       prompts: [
+        {
+          type: 'list',
+          name: 'type',
+          message: 'Atomic type',
+          choices: ['atoms', 'molecules', 'organisms', 'templates', 'pages']
+        },
         {
           type: 'input',
           name: 'name',
-          message: 'atom name'
+          message: 'component name'
         },
         {
           type: 'input',
@@ -17,27 +23,27 @@ export default function (plop) {
       actions: [
         {
           type: 'add',
-          path: 'src/components/atoms/{{name}}/index.ts',
+          path: 'src/components/{{lowerCase type}}/{{name}}/index.ts',
           templateFile: 'templates/index.hbs'
         },
         {
           type: 'add',
-          path: 'src/components/atoms/{{name}}/{{name}}.tsx',
+          path: 'src/components/{{lowerCase type}}/{{name}}/{{name}}.tsx',
           templateFile: 'templates/component.hbs'
         },
         {
           type: 'add',
-          path: 'src/components/atoms/{{name}}/{{name}}.module.scss',
+          path: 'src/components/{{lowerCase type}}/{{name}}/{{name}}.module.scss',
           templateFile: 'templates/styles.hbs'
         },
         {
           type: 'add',
-          path: 'src/components/atoms/{{name}}/{{name}}Props.ts',
+          path: 'src/components/{{lowerCase type}}/{{name}}/{{name}}Props.ts',
           templateFile: 'templates/props.hbs'
         },
         {
           type: 'add',
-          path: 'src/components/atoms/{{name}}/{{name}}.test.tsx',
+          path: 'src/components/{{lowerCase type}}/{{name}}/{{name}}.test.tsx',
           templateFile: 'templates/tests.hbs'
         },
       ]
