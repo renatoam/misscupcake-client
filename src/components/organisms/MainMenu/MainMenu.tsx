@@ -17,14 +17,14 @@ export default function MainMenu() {
   }
   
   return (
-    <Menu.Root className={styles.menu}>
+    <Menu.Root className={styles.menu} role="menubar">
       <Icon
         icon={faBars}
         label="menu"
         onClick={handleMenu}
         className={styles.menu__trigger}
       />
-      <Nav className={`${styles.menu__links} ${open ? styles['open'] : ''}`}>
+      <Nav role={open ? "menu" : ''} className={`${styles.menu__links} ${open ? styles['open'] : ''}`}>
         {links.map((item, index) => {
           return (
             <NavItem
