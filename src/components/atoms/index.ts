@@ -1,7 +1,7 @@
-export * as Container from './Container'
-export * as Icon from './Icon'
-export * as Nav from './Nav'
-export * as NavItem from './NavItem'
-export * as Typography from './Typography'
-export * as Wrapper from './Wrapper'
+export { default as Container } from './Container'
+export { default as Icon } from './Icon'
+export { default as Nav } from './Nav'
+export { default as NavItem } from './NavItem'
+export { default as Typography } from './Typography'
+export { default as Wrapper } from './Wrapper'
 

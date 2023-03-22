@@ -1,9 +1,4 @@
-import Container from '@/components/atoms/Container/Container';
-import Icon from '@/components/atoms/Icon/Icon';
-import Nav from '@/components/atoms/Nav/Nav';
-import NavItem from '@/components/atoms/NavItem';
-import Typography from '@/components/atoms/Typography';
-import Wrapper from '@/components/atoms/Wrapper';
+import { Container, Icon, Nav, NavItem, Typography, Wrapper } from '@/components/atoms';
 import { links } from '@/constants/navigation';
 import { faBars, faCartShopping, faHouseChimneyWindow } from '@fortawesome/free-solid-svg-icons';
 import * as Menu from '@radix-ui/react-navigation-menu';
