@@ -8,7 +8,7 @@ export default function Nav(props: PropsWithChildren<NavProps>) {
   
   return (
     <Wrapper element="nav" role={role || 'navigation'}>
-      <Wrapper element="ul" className={`${styles.ul} ${className}`}>
+      <Wrapper element="ul" aria-label="list" className={`${styles.ul} ${className}`}>
         {children}
       </Wrapper>
     </Wrapper>
