@@ -17,12 +17,12 @@ export default function HomePage() {
   const [content, setContent] = useState('We are proud to offer cupcakes and cakes that are freshly baked within hours, if not minutes, for your enjoyment.')
 
   function handleEditing(event: any) {
-    console.log('Blur', event.target.textContent)
     setContent(event.target.textContent)
     setEditable(false)
   }
 
   const Wrapping = editable ? 'div' : Fragment
+  const wrappingProps = editable && { style: { border: editable ? '1px solid' : '' } }
 
   return (
     <main className={styles.main}>
@@ -38,7 +38,7 @@ export default function HomePage() {
               element="p"
               className={styles.hero__description}
             >
-              <Wrapping style={{ border: editable ? '1px solid' : '' }}>
+              <Wrapping {...wrappingProps}>
                 {content}
               </Wrapping>
             </Typography>
