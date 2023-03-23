@@ -1,4 +1,5 @@
-import { Icon, Nav, NavItem, Typography } from '@/components/atoms';
+import { Icon, Typography } from '@/components/atoms';
+import { Nav, NavItem } from '@/components/molecules';
 import { links } from '@/constants/navigation';
 import { faBars, faHouseChimneyWindow } from '@fortawesome/free-solid-svg-icons';
 import * as Menu from '@radix-ui/react-navigation-menu';
@@ -29,7 +30,7 @@ export default function MainMenu() {
           return (
             <NavItem
               key={item.id}
-              href={item.link}
+              to={item.link}
               className={`${styles.menu__item} ${isActive(item.link)}`}
             >
               <Typography element="span">

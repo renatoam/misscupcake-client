@@ -1,4 +1,4 @@
-import { Container, Typography } from '@/components/atoms';
+import { Container, Typography, Wrapper } from '@/components/atoms';
 import { Header } from '@/components/organisms';
 import { Fragment, lazy, useState } from "react";
 import styles from "./HomePage.module.scss";
@@ -25,11 +25,11 @@ export default function HomePage() {
   const wrappingProps = editable && { style: { border: editable ? '1px solid' : '' } }
 
   return (
-    <main className={styles.main}>
+    <Wrapper element="main" className={styles.main}>
       <Header />
-      <section role="banner" className={styles.hero}>
+      <Wrapper role="banner" className={styles.hero}>
         <Container className={styles.hero__container}>
-          <section className={styles.hero__text}>
+          <Wrapper className={styles.hero__text}>
             <Typography element="h1" className={styles.hero__title}>Miss<br />Cupcake</Typography>
 
             <Typography
@@ -50,7 +50,7 @@ export default function HomePage() {
               style={{ backgroundColor: editable ? '#caa0f1' : '#a046f5'}}
             >Edit</button>
             {/* <button className={styles.hero__button}>Shop now</button> */}
-          </section>
+          </Wrapper>
           <figure className={styles.hero__image}>
             <picture onLoad={() => setBlur({ avif: '', webp: '', png: '' })}>
               <source srcSet={`https://res.cloudinary.com/otaner/image/upload/cupcake/hero-image-mob-avif.avif 600w, https://res.cloudinary.com/otaner/image/upload/cupcake/hero-image-tab-avif.avif 960w, https://res.cloudinary.com/otaner/image/upload/cupcake/hero-image-desk-avif.avif 1600w`} sizes="(max-width: 600px) 600px, (max-width: 1024px) 960px,(min-width: 1025px) 1600px" type="image/avif" />
@@ -59,9 +59,9 @@ export default function HomePage() {
             </picture>
           </figure>
         </Container>
-      </section>
+      </Wrapper>
 
-      <section className={styles.why}>
+      <Wrapper className={styles.why}>
         <Container className={styles.why__container}>
           <figure className={styles.why__image}>
             <img
@@ -74,17 +74,17 @@ export default function HomePage() {
               decoding="async"
             />
           </figure>
-          <section className={styles.why__text}>
+          <Wrapper className={styles.why__text}>
             <Typography element="h2" className={styles.why__title}>The Simple,<br />Sweet Life</Typography>
             <Typography element="p" className={styles.why__description}>Our cupcakes are always made with the finest ingredients, creating a spark that makes your taste buds dance. You'll want to indulge in each and every decadent flavor.</Typography>
             <button className={styles.why__button}>Why Miss Cupcake</button>
-          </section>
+          </Wrapper>
         </Container>
-      </section>
+      </Wrapper>
 
       <LazyLoader>
         <Featured />
       </LazyLoader>
-    </main>
+    </Wrapper>
   )
 }

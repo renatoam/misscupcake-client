@@ -6,7 +6,7 @@ describe('Nav', () => {
   it('should render proper children', () => {
     const children = "new kids on the block"
     render(<Nav children={children} />)
-    const sut = screen.getByLabelText('list')
+    const sut = screen.getByLabelText('navigation list')
     expect(sut.textContent).toBe(children)
   })
   

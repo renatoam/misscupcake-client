@@ -1,12 +1,12 @@
 import { PropsWithChildren } from 'react'
 import styles from './Wrapper.module.scss'
-import { HTMLGenericAttributes, WrapperProps } from './WrapperProps'
+import { WrapperProps } from './WrapperProps'
 
 export default function Wrapper(props: PropsWithChildren<WrapperProps>) {
-  const { element: Element, className, children, ...rest } = props
+  const { element: Element = 'section', className, children, ...rest } = props
   
   return (
-    <Element className={`${styles.wrapper} ${className}`} {...rest as HTMLGenericAttributes}>
+    <Element className={`${styles.wrapper} ${className}`} {...rest}>
       {children}
     </Element>
   )
