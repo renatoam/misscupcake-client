@@ -1,6 +1,6 @@
+import { ListItem } from '@/components/atoms'
 import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import ListItem from '../../atoms/ListItem'
 import styles from './NavItem.module.scss'
 import { NavItemProps } from './NavItemProps'
  

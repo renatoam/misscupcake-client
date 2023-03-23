@@ -1,5 +1,6 @@
 import { Container, Typography, Wrapper } from '@/components/atoms';
 import { Header } from '@/components/organisms';
+import { useEditContext } from '@/contexts/EditContext';
 import { Fragment, lazy, useState } from "react";
 import styles from "./HomePage.module.scss";
 import LazyLoader from "./lazy";
@@ -7,18 +8,20 @@ import LazyLoader from "./lazy";
 const Featured = lazy(() => import('./temporary'))
 
 export default function HomePage() {
+  const { editable } = useEditContext()
+
   const [blur, setBlur] = useState({
     avif: 'w_430/e_blur:1000,q_1,f_avif/',
     webp: 'w_430/e_blur:1000,q_1,f_webp/',
     png: 'w_430/e_blur:1000,q_1,f_png/',
   })
 
-  const [editable, setEditable] = useState(false)
+  // controlar todos os items/estados editáveis com useReducer - talvez criar um context
+  // configurar capacidade de edição somente pra admins
   const [content, setContent] = useState('We are proud to offer cupcakes and cakes that are freshly baked within hours, if not minutes, for your enjoyment.')
 
   function handleEditing(event: any) {
     setContent(event.target.textContent)
-    setEditable(false)
   }
 
   const Wrapping = editable ? 'div' : Fragment
@@ -43,13 +46,7 @@ export default function HomePage() {
               </Wrapping>
             </Typography>
 
-            <button
-              className={styles.hero__button}
-              disabled={editable}
-              onClick={() => setEditable(true)}
-              style={{ backgroundColor: editable ? '#caa0f1' : '#a046f5'}}
-            >Edit</button>
-            {/* <button className={styles.hero__button}>Shop now</button> */}
+            <button className={styles.hero__button}>Shop now</button>
           </Wrapper>
           <figure className={styles.hero__image}>
             <picture onLoad={() => setBlur({ avif: '', webp: '', png: '' })}>

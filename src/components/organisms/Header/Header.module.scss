@@ -5,7 +5,9 @@
     height: 8rem;
   }
 
-  &__cart {
+  &__actions {
+    display: flex;
+    gap: 1.6rem;
     margin-inline-start: auto;
   }
 }

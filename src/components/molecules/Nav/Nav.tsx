@@ -1,5 +1,4 @@
-import List from '../../atoms/List'
-import Wrapper from '../../atoms/Wrapper'
+import { List, Wrapper } from '@/components/atoms'
 import styles from './Nav.module.scss'
 import { NavProps } from './NavProps'
  
