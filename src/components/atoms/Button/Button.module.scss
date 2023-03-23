@@ -1,0 +1,26 @@
+.button {
+  background-color: #642C99;
+  border-radius: .8rem;
+  color: #FBFAC9;
+  cursor: pointer;
+  font-weight: 500;
+  padding-block: .8rem;
+  padding-inline: clamp(.8rem, 2vw + .1rem, 1.6rem);
+  text-transform: uppercase;
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    background-color: #a046f5;
+  }
+
+  &:active {
+    background-color: #351751;
+  }
+
+  &:focus,
+  &:focus-visible,
+  &:focus-within {
+    background-color: #351751;
+    outline: 1px solid #a046f5;
+  }
+}
