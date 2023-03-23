@@ -1,2 +1,3 @@
 import { LinkProps } from "react-router-dom";
-export interface NavItemProps extends LinkProps {}
+
+export interface NavItemProps extends Partial<LinkProps> {}

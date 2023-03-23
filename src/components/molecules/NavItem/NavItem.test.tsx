@@ -10,7 +10,7 @@ describe('NavItem', () => {
   })
   
   it('should have a link if a href is provided', () => {
-    render(<NavItem href="/test" />, { wrapper: BrowserRouter })
+    render(<NavItem to="/test" />, { wrapper: BrowserRouter })
     expect(screen.queryByRole('link')).toBeInTheDocument()
   })
   
