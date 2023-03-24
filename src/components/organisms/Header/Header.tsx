@@ -1,4 +1,4 @@
-import { Container, Icon, Wrapper } from '@/components/atoms';
+import { Button, Container, Icon, Wrapper } from '@/components/atoms';
 import { useEditContext } from '@/contexts/EditContext';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import MainMenu from '../MainMenu';
@@ -17,7 +17,7 @@ export default function Header() {
       <Container className={styles.header__container}>
         <MainMenu />
         <Wrapper className={styles.header__actions}>
-          <button onClick={handleEditing}>{editButtonText}</button>
+          <Button onClick={handleEditing}>{editButtonText}</Button>
           <Icon
             label="cart"
             icon={faCartShopping}

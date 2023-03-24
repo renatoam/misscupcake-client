@@ -1,7 +1,9 @@
-import { Container, Typography, Wrapper } from '@/components/atoms';
+import { Button, Container, Typography, Wrapper } from '@/components/atoms';
+import { Image } from '@/components/molecules';
 import { Header } from '@/components/organisms';
+import { heroFallback, sources } from '@/constants/images';
 import { useEditContext } from '@/contexts/EditContext';
-import { Fragment, lazy, useState } from "react";
+import { lazy, useState } from "react";
 import styles from "./HomePage.module.scss";
 import LazyLoader from "./lazy";
 
@@ -9,12 +11,6 @@ const Featured = lazy(() => import('./temporary'))
 
 export default function HomePage() {
   const { editable } = useEditContext()
-
-  const [blur, setBlur] = useState({
-    avif: 'w_430/e_blur:1000,q_1,f_avif/',
-    webp: 'w_430/e_blur:1000,q_1,f_webp/',
-    png: 'w_430/e_blur:1000,q_1,f_png/',
-  })
 
   // controlar todos os items/estados editáveis com useReducer - talvez criar um context
   // configurar capacidade de edição somente pra admins
@@ -24,7 +20,6 @@ export default function HomePage() {
     setContent(event.target.textContent)
   }
 
-  const Wrapping = editable ? 'div' : Fragment
   const wrappingProps = editable && { style: { border: editable ? '1px solid' : '' } }
 
   return (
@@ -40,41 +35,38 @@ export default function HomePage() {
               onBlur={handleEditing}
               element="p"
               className={styles.hero__description}
+              {...wrappingProps}
             >
-              <Wrapping {...wrappingProps}>
-                {content}
-              </Wrapping>
+              {content}
             </Typography>
 
-            <button className={styles.hero__button}>Shop now</button>
+            <Button className={styles.hero__button}>Shop now</Button>
           </Wrapper>
-          <figure className={styles.hero__image}>
-            <picture onLoad={() => setBlur({ avif: '', webp: '', png: '' })}>
-              <source srcSet={`https://res.cloudinary.com/otaner/image/upload/cupcake/hero-image-mob-avif.avif 600w, https://res.cloudinary.com/otaner/image/upload/cupcake/hero-image-tab-avif.avif 960w, https://res.cloudinary.com/otaner/image/upload/cupcake/hero-image-desk-avif.avif 1600w`} sizes="(max-width: 600px) 600px, (max-width: 1024px) 960px,(min-width: 1025px) 1600px" type="image/avif" />
-              <source srcSet={`https://res.cloudinary.com/otaner/image/upload/cupcake/hero-image-mob-webp.webp 600w, https://res.cloudinary.com/otaner/image/upload/cupcake/hero-image-tab-webp.webp 960w, https://res.cloudinary.com/otaner/image/upload/cupcake/hero-image-desk-webp.webp 1600w`} sizes="(max-width: 600px) 600px, (max-width: 1024px) 960px,(min-width: 1025px) 1600px" type="image/webp" />
-              <img src={`https://res.cloudinary.com/otaner/image/upload/${blur.png}cupcake/hero-image-desk-png.png`} alt="Cupcakes falling" width={530} height={710} />
-            </picture>
-          </figure>
+          <Image
+            sources={sources}
+            src={heroFallback.src}
+            alt={heroFallback.alt}
+            width={530}
+            height={710}
+            figureProps={{ className: styles.hero__image }}
+            blurOptions="none"
+          />
         </Container>
       </Wrapper>
 
       <Wrapper className={styles.why}>
         <Container className={styles.why__container}>
-          <figure className={styles.why__image}>
-            <img
-              onLoad={() => setBlur({ avif: '', webp: '', png: '' })}
-              src={`https://res.cloudinary.com/otaner/image/upload/${blur.avif}cupcake/split-cupcake-desk-avif.avif`}
-              alt="Split cupcake"
-              loading="lazy"
-              width={430}
-              height={530}
-              decoding="async"
-            />
-          </figure>
+          <Image
+            src="cupcake/split-cupcake-desk-avif.avif"
+            alt="Split cupcake"
+            width={430}
+            height={530}
+            figureProps={{ className: styles.why__image }}
+          />
           <Wrapper className={styles.why__text}>
             <Typography element="h2" className={styles.why__title}>The Simple,<br />Sweet Life</Typography>
             <Typography element="p" className={styles.why__description}>Our cupcakes are always made with the finest ingredients, creating a spark that makes your taste buds dance. You'll want to indulge in each and every decadent flavor.</Typography>
-            <button className={styles.why__button}>Why Miss Cupcake</button>
+            <Button className={styles.why__button}>Why Miss Cupcake</Button>
           </Wrapper>
         </Container>
       </Wrapper>

@@ -1,9 +1,8 @@
-import Typography from "@/components/atoms/Typography"
+import { Button, Container, Typography } from "@/components/atoms"
 import axios from "axios"
 import { useState } from "react"
 import { useQuery } from "react-query"
 import { Link } from "react-router-dom"
-import Container from "../../atoms/Container/Container"
 import styles from "./HomePage.module.scss"
 
 export default function Featured() {
@@ -56,7 +55,7 @@ export default function Featured() {
                     <input type="number" defaultValue={10} />
                     <button>+</button>
                   </section>
-                  <button className={styles.cta}>Add to Cart</button>
+                  <Button>Add to Cart</Button>
                 </section>
               </section>
             )
