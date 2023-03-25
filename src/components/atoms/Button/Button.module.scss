@@ -23,4 +23,24 @@
     background-color: #351751;
     outline: 1px solid #a046f5;
   }
+
+  &.text {
+    background-color: transparent;
+    color: #642C99;
+
+    &:hover {
+      background-color: #e6d4f7;
+    }
+  
+    &:active {
+      background-color: #dfc6f6;
+    }
+  
+    &:focus,
+    &:focus-visible,
+    &:focus-within {
+      background-color: #dfc6f6;
+      outline: 1px solid #e6d4f7;
+    }
+  }
 }
