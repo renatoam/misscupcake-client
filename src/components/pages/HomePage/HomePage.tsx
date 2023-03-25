@@ -1,16 +1,18 @@
 import { Button, Container, Typography, Wrapper } from '@/components/atoms';
 import { Image } from '@/components/molecules';
 import { Header } from '@/components/organisms';
+import Showcase from '@/components/organisms/Showcase';
 import { heroFallback, sources } from '@/constants/images';
 import { useEditContext } from '@/contexts/EditContext';
-import { lazy, useState } from "react";
+import { useState } from "react";
+import { useHomePage } from './HomePage.context';
 import styles from "./HomePage.module.scss";
-import LazyLoader from "./lazy";
-
-const Featured = lazy(() => import('./temporary'))
 
 export default function HomePage() {
   const { editable } = useEditContext()
+  const { products } = useHomePage()
+
+  console.log({ products })
 
   // controlar todos os items/estados editáveis com useReducer - talvez criar um context
   // configurar capacidade de edição somente pra admins
@@ -70,10 +72,12 @@ export default function HomePage() {
           </Wrapper>
         </Container>
       </Wrapper>
-
-      <LazyLoader>
-        <Featured />
-      </LazyLoader>
+      <Wrapper className={styles.featured}>
+        <Container className={styles.featured__container}>
+          <Typography element="h2">Make your day a little sweeter</Typography>
+          <Showcase products={products} loader={<p>Loading...</p>} />
+        </Container>
+      </Wrapper>
     </Wrapper>
   )
 }

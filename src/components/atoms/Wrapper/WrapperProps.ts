@@ -12,6 +12,7 @@ type WrapperElements = 'abbr' |
 'cite' |
 'code' |
 'dd' |
+'div' |
 'dfn' |
 'dt' |
 'em' |

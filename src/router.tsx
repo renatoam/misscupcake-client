@@ -1,6 +1,7 @@
 import { lazy } from "react";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import HomePage from "./components/pages/HomePage/HomePage";
+import { HomePageContextProvider } from "./components/pages/HomePage/HomePage.context";
 const ProductDetailsPage = lazy(() => import("./components/pages/ProductDetailsPage/ProductDetailsPage"));
 
 const router = createBrowserRouter([
@@ -10,7 +11,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage />,
+        element: <HomePageContextProvider children={<HomePage />} />,
       },
       {
         path: 'product/:id',
