@@ -4,7 +4,7 @@ export interface ImageProps extends NativeImage {
   sources?: Source[]
   caption?: string
   type?: MimeTypes
-  src: string
+  server?: boolean
 }
 
 export type Source = {

@@ -1,64 +1,33 @@
 import { Wrapper } from "@/components/atoms";
-import { defaultBlurConfig, initialBlurConfig } from "@/constants/images";
-import { useState } from "react";
-import { BlurOptions, ImageProps, MimeTypes, Sizes, SrcSet } from "./ImageProps";
-
-function handleBlurOptions(blurOpt?: BlurOptions | 'none'): BlurOptions {  
-  if (blurOpt === 'none') {
-    return initialBlurConfig
-  }
-
-  if (blurOpt) {
-    return blurOpt
-  }
-
-  return defaultBlurConfig
-}
-
-const baseURL = import.meta.env.VITE_BASE_IMAGE_URL
+import useImage from "@/hooks/useImage";
+import styles from './Image.module.scss';
+import { ImageProps } from "./ImageProps";
 
 export default function Image(props: ImageProps) {
   const {
-    src,
     loading = 'lazy',
     decoding = 'async',
-    blurOptions,
     figureProps,
     caption,
     sources,
     height,
     width,
-    type,
-    ...imageProps
+    blurOptions,
+    server,
+    ...rest
   } = props
 
-  const [blur, setBlur] = useState(handleBlurOptions(blurOptions))
-
-  function handleBlur() {
-    setBlur(initialBlurConfig)
-  }
-
-  function handleSrcSets(srcSets: SrcSet[], type: MimeTypes): string {
-    let blurType: string | undefined = ''
-
-    if (blurOptions) {
-      blurType = blur[type]
-    }
-    
-    const setsList = srcSets.map(set => `${baseURL}/${blurType}${set.src} ${set.size}`)
-    const sets = setsList.join(', ')
-  
-    return sets
-  }
-  
-  function handleSetSizes(setSizes: Sizes[]): string {
-    const setsList = setSizes.map(set => `${set.condition} ${set.size}`)
-    const sets = setsList.join(', ')
-    return sets
-  }
+  const {
+    imageSource,
+    handleLoad,
+    handleSetSizes,
+    handleSrcSets,
+    Placeholder
+  } = useImage(props)
 
   return (
-    <Wrapper element="figure" {...figureProps}>
+    <Wrapper element="figure" className={styles.figure} {...figureProps}>
+      <Placeholder />
       <picture aria-label="picture">
         {sources?.map(source => {
           return (
@@ -73,11 +42,13 @@ export default function Image(props: ImageProps) {
           )
         })}
         <img
-          src={`${baseURL}/${blur[type || 'png']}${src}`}
-          onLoad={handleBlur}
+          {...rest}
+          src={imageSource}
+          onLoad={handleLoad}
           height={height}
           width={width}
-          {...imageProps}
+          loading={loading}
+          decoding={decoding}
         />
       </picture>
       {caption && <figcaption>{caption}</figcaption>}

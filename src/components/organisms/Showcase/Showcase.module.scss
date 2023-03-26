@@ -75,16 +75,3 @@
     appearance: textfield;
   }
 }
-
-.placeholder {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transition: all 0.4s ease-in-out;
-  opacity: 0;
-  filter: blur(16px);
-
-  &.loading {
-    opacity: 1;
-  }
-}

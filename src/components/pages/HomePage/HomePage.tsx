@@ -31,7 +31,6 @@ export default function HomePage() {
         <Container className={styles.hero__container}>
           <Wrapper className={styles.hero__text}>
             <Typography element="h1" className={styles.hero__title}>Miss<br />Cupcake</Typography>
-
             <Typography
               contentEditable={editable}
               onBlur={handleEditing}
@@ -41,7 +40,6 @@ export default function HomePage() {
             >
               {content}
             </Typography>
-
             <Button className={styles.hero__button}>Shop now</Button>
           </Wrapper>
           <Image
@@ -55,7 +53,6 @@ export default function HomePage() {
           />
         </Container>
       </Wrapper>
-
       <Wrapper className={styles.why}>
         <Container className={styles.why__container}>
           <Image
@@ -64,6 +61,7 @@ export default function HomePage() {
             width={430}
             height={530}
             figureProps={{ className: styles.why__image }}
+            type="avif"
           />
           <Wrapper className={styles.why__text}>
             <Typography element="h2" className={styles.why__title}>The Simple,<br />Sweet Life</Typography>
