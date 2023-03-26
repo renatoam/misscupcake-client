@@ -1,14 +1,20 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as AccessibleIcon from '@radix-ui/react-accessible-icon'
+import { PropsWithChildren } from 'react'
 import styles from './Icon.module.scss'
 import { IconProps } from './IconProps'
  
-export default function Icon(props: IconProps) {
-  const { className = '', label, icon, onClick } = props
+export default function Icon(props: PropsWithChildren<IconProps>) {
+  const { className = '', label, icon, onClick, children } = props
+
   const iconButtonProps = onClick ? {
     role: 'button',
     onClick
   } : {}
+  
+  const content = icon ?
+    <FontAwesomeIcon icon={icon} className={styles.icon} /> :
+    children
 
   return (
     <i
@@ -17,7 +23,7 @@ export default function Icon(props: IconProps) {
       {...iconButtonProps}
     >
       <AccessibleIcon.Root label={label}>
-        <FontAwesomeIcon icon={icon} className={styles.icon} />
+        {content}
       </AccessibleIcon.Root>
     </i>
   )
