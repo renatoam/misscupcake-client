@@ -1,5 +1,38 @@
 ## Notes
 
+## Content Editing
+
+Create a collection on Mongo to store the content of the pages and components
+
+Ex.:
+
+```json
+{
+  "randomkey": "tananina",
+  "pages": [
+    {
+      "name": "Home",
+      "sections": [
+        {
+          "name": "Hero",
+          "sections": [
+            {
+              "name": "Main Text",
+              "title": "Miss Cupcake",
+              "content": "lorem ipsum"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "components": [
+    // same thing
+  ]
+}
+
+```
+
 ### About the atomic structure
 
 In atomic design, an atom is a basic building block of a UI that cannot be broken down any further without losing its functionality. An atom is the smallest possible component, such as a button or an input field, and it represents a single element of the UI.
