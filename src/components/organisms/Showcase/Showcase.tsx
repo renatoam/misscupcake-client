@@ -1,13 +1,12 @@
 import { Wrapper } from '@/components/atoms'
-import LazyLoader from '@/components/pages/HomePage/lazy'
 import ProductCard from '../ProductCard'
 import styles from './Showcase.module.scss'
-import { ShowcaseProps } from './ShowcaseProps'
+import { ServerProduct, ShowcaseProps } from './ShowcaseProps'
  
 function Showcase(props: ShowcaseProps) {  
   return (
-    <Wrapper className={styles.showcase}>
-      {props.products?.map((product: any) => {
+    <Wrapper className={styles.showcase} aria-label="Products showcase">
+      {props.products?.map((product: ServerProduct) => {
         return (
           <ProductCard
             key={product.id}
@@ -22,4 +21,4 @@ function Showcase(props: ShowcaseProps) {
   )
 }
 
-export default LazyLoader<ShowcaseProps>(Showcase)
+export default Showcase

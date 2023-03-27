@@ -1,3 +1,10 @@
 export interface ShowcaseProps {
-  products: any[]
+  products: ServerProduct[]
+}
+
+export interface ServerProduct {
+  id: string
+  name: string
+  description: string
+  images: string[]
 }

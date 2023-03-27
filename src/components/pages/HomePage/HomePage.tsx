@@ -7,6 +7,7 @@ import { useEditContext } from '@/contexts/EditContext';
 import { useState } from "react";
 import { useHomePage } from './HomePage.context';
 import styles from "./HomePage.module.scss";
+import LazyLoader from './lazy';
 
 export default function HomePage() {
   const { editable } = useEditContext()
@@ -70,12 +71,14 @@ export default function HomePage() {
           </Wrapper>
         </Container>
       </Wrapper>
-      <Wrapper className={styles.featured}>
-        <Container className={styles.featured__container}>
-          <Typography element="h2">Make your day a little sweeter</Typography>
-          <Showcase products={products} loader={<p>Loading...</p>} />
-        </Container>
-      </Wrapper>
+      <LazyLoader>
+        <Wrapper className={styles.featured}>
+          <Container className={styles.featured__container}>
+            <Typography element="h2">Make your day a little sweeter</Typography>
+            <Showcase products={products} />
+          </Container>
+        </Wrapper>
+      </LazyLoader>
     </Wrapper>
   )
 }

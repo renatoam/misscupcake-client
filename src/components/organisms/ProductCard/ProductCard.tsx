@@ -17,6 +17,7 @@ export default function ProductCard(props: ProductCardProps) {
       className={styles.card}
       aria-labelledby="productName"
       aria-describedby="productDescription"
+      role="article"
     >
       <Link to={`/product/${id}`}>
         <Image
