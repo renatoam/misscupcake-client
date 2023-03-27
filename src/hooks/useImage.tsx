@@ -1,5 +1,5 @@
+import { ImagePlaceholder } from "@/components/molecules"
 import { BlurOptions, ImageProps, MimeTypes, Sizes, SrcSet } from "@/components/molecules/Image/ImageProps"
-import ImagePlaceholder from "@/components/molecules/ImagePlaceholder"
 import { defaultBlurConfig, initialBlurConfig } from "@/constants/images"
 import { useState } from "react"
 

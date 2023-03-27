@@ -31,4 +31,10 @@ describe('Image', () => {
     expect(sut?.getAttribute('sizes')).toContain(size)
     expect(sut?.getAttribute('type')).toContain(type)
   })
+
+  it('should use the placeholder image', () => {
+    render(<Image alt="image" src={mockImage} server />)
+    const sut = screen.queryByLabelText('placeholder')
+    expect(sut).toBeInTheDocument()
+  })
 })

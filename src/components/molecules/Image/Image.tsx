@@ -26,7 +26,7 @@ export default function Image(props: ImageProps) {
   } = useImage(props)
 
   return (
-    <Wrapper element="figure" className={styles.figure} {...figureProps}>
+    <Wrapper element="figure" aria-label="figure" className={styles.figure} {...figureProps}>
       <Placeholder />
       <picture aria-label="picture">
         {sources?.map(source => {
