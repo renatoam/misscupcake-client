@@ -4,23 +4,29 @@ import { Header } from '@/components/organisms';
 import Showcase from '@/components/organisms/Showcase';
 import { heroFallback, sources } from '@/constants/images';
 import { useEditContext } from '@/contexts/EditContext';
-import { useState } from "react";
 import { useHomePage } from './HomePage.context';
 import styles from "./HomePage.module.scss";
-import LazyLoader from './lazy';
 
 export default function HomePage() {
   const { editable } = useEditContext()
-  const { products } = useHomePage()
+  const { products, content, mutation } = useHomePage()
 
-  console.log({ products })
-
-  // controlar todos os items/estados editáveis com useReducer - talvez criar um context
-  // configurar capacidade de edição somente pra admins
-  const [content, setContent] = useState('We are proud to offer cupcakes and cakes that are freshly baked within hours, if not minutes, for your enjoyment.')
+  const heroContent = content?.sections?.find((sec: any) => {
+    return sec.name === 'hero'
+  })
+  const hero = heroContent?.elements?.reduce((acc: any, element: any) => {
+    return {
+      ...acc,
+      [element.name]: element.content
+    }
+  }, {})
 
   function handleEditing(event: any) {
-    setContent(event.target.textContent)
+    mutation.mutate({
+      page: "home",
+      section: "hero",
+      description: event.target.textContent
+    })
   }
 
   const wrappingProps = editable && { style: { border: editable ? '1px solid' : '' } }
@@ -31,7 +37,7 @@ export default function HomePage() {
       <Wrapper role="banner" className={styles.hero}>
         <Container className={styles.hero__container}>
           <Wrapper className={styles.hero__text}>
-            <Typography element="h1" className={styles.hero__title}>Miss<br />Cupcake</Typography>
+            <Typography element="h1" className={styles.hero__title}>{hero?.title.split(' ')[0]}<br />{hero?.title.split(' ')[1]}</Typography>
             <Typography
               contentEditable={editable}
               onBlur={handleEditing}
@@ -39,7 +45,7 @@ export default function HomePage() {
               className={styles.hero__description}
               {...wrappingProps}
             >
-              {content}
+              {hero?.description}
             </Typography>
             <Button className={styles.hero__button}>Shop now</Button>
           </Wrapper>
@@ -71,14 +77,14 @@ export default function HomePage() {
           </Wrapper>
         </Container>
       </Wrapper>
-      <LazyLoader>
+      {/* <LazyLoader> */}
         <Wrapper className={styles.featured}>
           <Container className={styles.featured__container}>
             <Typography element="h2">Make your day a little sweeter</Typography>
             <Showcase products={products} />
           </Container>
         </Wrapper>
-      </LazyLoader>
+      {/* </LazyLoader> */}
     </Wrapper>
   )
 }
