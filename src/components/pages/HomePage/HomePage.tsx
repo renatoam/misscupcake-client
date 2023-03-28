@@ -1,7 +1,6 @@
 import { Button, Container, Typography, Wrapper } from '@/components/atoms';
 import { Image } from '@/components/molecules';
-import { Header } from '@/components/organisms';
-import Showcase from '@/components/organisms/Showcase';
+import { Header, Showcase } from '@/components/organisms';
 import { heroFallback, sources } from '@/constants/images';
 import { useEditContext } from '@/contexts/EditContext';
 import { useHomePage } from './HomePage.context';

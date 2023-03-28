@@ -1,0 +1,52 @@
+@use "@/styles/variables" as v;
+
+.input {
+  background-color: v.$input-background;
+  border: v.$bd-default solid v.$input-border;
+  border-radius: v.$br-xs;
+  height: clamp(4.4rem, 3.5vw + .1rem, 6.4rem);
+  padding-inline: v.$input-pd;
+  font-size: v.$fs-body;
+  font-family: v.$ff-default;
+  width: 100%;
+
+  &__control {
+    display: grid;
+    position: relative;
+  }
+
+  &::-ms-reveal {
+    display: none;
+  }
+
+  &:focus,
+  &:focus-visible,
+  &:focus-within {
+    border: v.$bd-large solid v.$input-border-focus;
+    outline: v.$input-border-focus auto v.$bd-large;
+  }
+
+  &::placeholder {
+    color: v.$input-placeholder;
+  }
+
+  &.invisible {
+    background-color: transparent;
+    border: none;
+    height: auto;
+    padding: 0;
+  }
+
+  & + .message {
+    position: absolute;
+    font-size: v.$fs-small;
+    color: v.$error;
+    left: 0;
+    bottom: v.$sp-xs;
+  }
+}
+
+[aria-invalid="true"] {
+  border: v.$bd-large solid v.$error;
+  outline: v.$error auto v.$bd-large;
+}
