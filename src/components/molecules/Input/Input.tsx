@@ -1,9 +1,9 @@
 import { Typography, Wrapper } from '@/components/atoms'
-import { forwardRef, memo, useCallback, useState } from 'react'
+import { ForwardedRef, forwardRef, memo, useCallback, useState } from 'react'
 import styles from './Input.module.scss'
 import { InputError, InputProps } from './InputProps'
  
-const Input = forwardRef((props: InputProps, ref: any) => {
+const Input = forwardRef((props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
   const {
     placeholder,
     name,

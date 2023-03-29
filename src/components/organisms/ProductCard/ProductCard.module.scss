@@ -45,26 +45,4 @@
     grid-template-rows: 1fr;
     gap: clamp(1.6rem, 1vw, 4rem);
   }
-  
-  &__controls {
-    border: .2rem solid;
-    border-radius: .8rem;
-    display: grid;
-    font-weight: 600;
-    grid-template-columns: repeat(3, minmax(2.4rem, 5rem));
-    padding-block: .8rem;
-    padding-inline: .8rem;
-  
-    /* Chrome, Safari, Edge, Opera */
-    > input::-webkit-outer-spin-button,
-    > input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-  
-    /* Firefox */
-    > input[type=number] {
-      appearance: textfield;
-    }
-  }
 }

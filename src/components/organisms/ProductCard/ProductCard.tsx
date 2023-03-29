@@ -1,6 +1,7 @@
 import { Button, Typography, Wrapper } from '@/components/atoms'
-import { Image, Input } from '@/components/molecules'
+import { Image } from '@/components/molecules'
 import { Link } from 'react-router-dom'
+import QuantityControl from '../QuantityControl'
 import styles from './ProductCard.module.scss'
 import { ProductCardProps } from './ProductCardProps'
  
@@ -39,19 +40,7 @@ export default function ProductCard(props: ProductCardProps) {
         </Typography>
       </Link>
       <Wrapper element="section" className={styles.card__actions}>
-        <Wrapper element="section" className={styles.card__controls}>
-          <Button variant="text" aria-label="minus" aria-controls="quantity">-</Button>
-          <Input
-            name="quantity"
-            aria-label="quantity box"
-            defaultValue={10}
-            variant="invisible"
-            role="alert"
-            aria-live="assertive"
-            id="quantity"
-          />
-          <Button variant="text" aria-label="plus" aria-controls="quantity">+</Button>
-        </Wrapper>
+        <QuantityControl />
         <Button aria-label="add">Add to Cart</Button>
       </Wrapper>
     </Wrapper>
