@@ -1,0 +1,33 @@
+Cenário 1:
+
+Usuário anônimo navega pelo site:
+  ✔ Anônimo recebe um guest ID @done(23-06-08 17:37)
+	✔ Guest ID é salvo em web storage @done(23-06-08 17:37)
+
+Client envia requisição para o servidor checar se já há algum carrinho para este guest ID:
+  - Se houver, retorna os produtos
+  - Se não houver, nada muda (retorna 404, mas client trata como vazio ou nulo)
+
+- Anônimo adiciona produtos no carrinho via catálogo (Add to Cart)
+  - Client envia account ID (como nulo) e guest ID para o servidor
+  - Produtos são salvos via web storage (IndexedDB) para acesso offline (PWA)
+    - Também podemos cachear as respostas das requests de catálogo para permitir requests offline
+
+- Servidor cria um novo carrinho usando o guest ID enviado
+  - O guest ID é validado antes e, sendo inválido, servidor retorna um erro
+
+- Servidor retorna dados básicos do carrinho (suficiente pra exibir Mini Cart)
+
+- Anônimo fecha o browser
+	- IndexedDB mantém guest ID e carrinho salvos no Client
+    - IndexedDB também permite criar collections, como com NoSQL, então podemos criar collections para wishlist e "save for later"
+
+- Anônimo abre novamente o browser
+	- Guest ID e carrinho são recuperados do IndexedDB
+    - Servidor verifica que carrinho está ativo
+    - Neste caso (verificar se carrinho está ativo), estamos considerando a possibilidade do usuário poder fechar uma compra sem se logar, porque aí teríamos mais status para o carrinho além de "ativo"
+  - Carrinho é reidratado com os dados atualizados do servidor (Get Cart?*)
+
+> *: se o usuário nunca chegou na tela de carrinho, não vai ter usado o Load Cart. Nesse caso, usamos o Add to Cart, que no caso de já haver um carrinho criado, apenas o atualiza.
+> 
+> Mas seria interessante ter um recurso específico para checar se o usuário já possui um carrinho salvo, talvez seja melhor do que usar o Add to Cart fora do escopo dele.
