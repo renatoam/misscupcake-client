@@ -1,4 +1,3 @@
-import { Wrapper } from '@/components/atoms';
 import { Suspense, useEffect, useRef, useState } from 'react';
 
 function LazyLoader({ loader, children }: any) {
@@ -33,9 +32,9 @@ function LazyLoader({ loader, children }: any) {
 
   return (
     <Suspense fallback={loader ? loader : <p>Loading...</p>}>
-      <Wrapper ref={ref}>
+      <section ref={ref}>
         {isVisible && children}
-      </Wrapper>
+      </section>
     </Suspense>
   );
 }

@@ -1,14 +1,20 @@
 import { Button, Container, Typography, Wrapper } from '@/components/atoms';
 import { Image } from '@/components/molecules';
-import { Header, Showcase } from '@/components/organisms';
+import { Header } from '@/components/organisms';
 import { heroFallback, sources } from '@/constants/images';
 import { useEditContext } from '@/contexts/EditContext';
+import { lazy } from 'react';
 import { useHomePage } from './HomePage.context';
 import styles from "./HomePage.module.scss";
+import LazyLoader from './lazy';
+import useLoadActiveCart from '@/app/features/loadActiveCart/loadActiveCartController';
+
+const Featured = lazy(() => import('./fragments/Featured'))
 
 export default function HomePage() {
   const { editable } = useEditContext()
   const { products, content, mutation } = useHomePage()
+  const { data, error, isLoading } = useLoadActiveCart()
 
   const heroContent = content?.sections?.find((sec: any) => {
     return sec.name === 'hero'
@@ -29,6 +35,11 @@ export default function HomePage() {
   }
 
   const wrappingProps = editable && { style: { border: editable ? '1px solid' : '' } }
+
+  if (isLoading) return <h1>IS LOADING...</h1>
+  if (!!error) return <h1>IS ERROR!!!</h1>
+
+  console.log({ data })
 
   return (
     <Wrapper element="main" className={styles.main}>
@@ -76,14 +87,9 @@ export default function HomePage() {
           </Wrapper>
         </Container>
       </Wrapper>
-      {/* <LazyLoader> */}
-        <Wrapper className={styles.featured}>
-          <Container className={styles.featured__container}>
-            <Typography element="h2">Make your day a little sweeter</Typography>
-            <Showcase products={products} />
-          </Container>
-        </Wrapper>
-      {/* </LazyLoader> */}
+      <LazyLoader>
+        <Featured products={products} />
+      </LazyLoader>
     </Wrapper>
   )
 }

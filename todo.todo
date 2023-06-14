@@ -6,7 +6,7 @@ Usuário anônimo navega pelo site:
 
 Client envia requisição para o servidor checar se já há algum carrinho para este guest ID:
   - Se houver, retorna os produtos
-  - Se não houver, nada muda (retorna 404, mas client trata como vazio ou nulo)
+  ✔ Se não houver, nada muda (retorna 404, mas client trata como vazio ou nulo) @done(23-06-12 19:53)
 
 - Anônimo adiciona produtos no carrinho via catálogo (Add to Cart)
   - Client envia account ID (como nulo) e guest ID para o servidor

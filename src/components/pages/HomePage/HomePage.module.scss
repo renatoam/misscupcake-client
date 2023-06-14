@@ -117,19 +117,3 @@ $container-width: max(144rem, 80vw);
     }
   }
 }
-
-.featured {
-  &__container {
-    display: grid;
-    gap: clamp(4rem, 3vw + .1rem, 6rem);
-    padding-block: 6.4rem;
-    
-    > h2 {
-      font-size: clamp(5rem, 3.5vw + 0.1rem, 9rem);
-      font-weight: 900;
-      line-height: 1.4;
-      max-inline-size: 11ch;
-      margin-block-end: 13.6rem;
-    }
-  }
-}

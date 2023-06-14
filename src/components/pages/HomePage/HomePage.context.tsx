@@ -9,7 +9,7 @@ export const useHomePage = () => useContext(HomePageContext)
 
 export const HomePageContextProvider = ({ children }: any) => {
   const { data: products } = useQuery('homeProducts', async () => {
-    const response = await axios.get(`${API_URL}/products/featured`)
+    const response = await axios.get(`${API_URL}/products?price=lte%3A3&in_stock=eq%3Afalse`)
     return response.data
   })
   

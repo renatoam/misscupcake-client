@@ -3,13 +3,16 @@ import { RouterProvider } from 'react-router-dom';
 import { queryClient } from './config';
 import { EditContextProvider } from './contexts/EditContext';
 import router from './router';
+import { AuthContextProvider } from './contexts/AuthContext';
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <EditContextProvider>
-        <RouterProvider router={router} />
-      </EditContextProvider>
+      <AuthContextProvider>
+        <EditContextProvider>
+          <RouterProvider router={router} />
+        </EditContextProvider>
+      </AuthContextProvider>
     </QueryClientProvider>
   )
 }
