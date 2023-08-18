@@ -1,9 +1,7 @@
-import { LoadActiveCartDTO } from "../features/loadActiveCart/loadActiveCartDTO"
-
-export interface CartGateway {
-  loadCart(): any
-  loadActiveCart(loadActiveCartDTO: LoadActiveCartDTO): Promise<any>
-  updateCart(): any
-  deleteCart(): any
-  deleteFromCart(): any
+export interface CartGateway<DTO = unknown, Response = unknown> {
+  loadCart(): unknown
+  loadActiveCart(dto: DTO): Promise<Response>
+  updateCart(): unknown
+  deleteCart(): void
+  deleteFromCart(): unknown
 }

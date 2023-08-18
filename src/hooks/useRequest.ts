@@ -12,6 +12,7 @@ export default function useRequest(fetcher: any, options?: unknown) {
     if (response.error) {
       setError(response)
       console.error('Notify Error: ', response.message)
+      setIsLoading(false)
       return
     }
 

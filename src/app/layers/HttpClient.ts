@@ -1,15 +1,16 @@
-export interface HttpClient {
+export interface HttpClient<Response = unknown, Error = never> {
   get(
     url: string,
     query?: Record<string, unknown>,
     route?: Record<string, unknown>
-  ): Promise<unknown>
+  ): Promise<Response | Error extends never ? never : HttpClientError>
+
   post(
     url: string,
     query?: Record<string, unknown>,
     route?: Record<string, unknown>,
     body?: unknown
-  ): Promise<unknown>
+  ): Promise<Response | Error>
 }
 
 export interface HttpClientError {

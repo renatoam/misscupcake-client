@@ -15,7 +15,7 @@ const useImage = (props: ImageProps) => {
   const [imageStatus, setImageStatus] = useState('loading')
   
   const baseURL = server ? '' : import.meta.env.VITE_BASE_IMAGE_URL
-  const imageSource = server ? src : `${baseURL}/${blur[type || 'png']}${src}`
+  const imageSource = server ? src : `${baseURL}/${blur[type ?? 'png']}${src}`
 
   function handleBlurOptions(): BlurOptions {
     if (blurOptions === 'none') {

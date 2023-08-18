@@ -1,32 +1,20 @@
-import { LoadActiveCartDTO } from "../features/loadActiveCart/loadActiveCartDTO";
+import { LoadActiveCartDTO, SimpleCartResponseDTO } from "../features/loadActiveCart/loadActiveCartDTO";
+import loadActiveCartGateway from "../features/loadActiveCart/loadActiveCartGateway";
 import { HttpClient, HttpClientError } from "./HttpClient";
 import { CartGateway } from "./cartGateway.props";
 
-export default function customCartGateway<T extends HttpClient>(httpClient: T): CartGateway {
-  const loadActiveCart = async (loadActiveCartDTO: LoadActiveCartDTO): Promise<any> => {
-    const { accountId, guestId } = loadActiveCartDTO
-    
-    try {
-      const response = await httpClient.get(`/carts/active?accountId=${accountId}&guestId=${guestId}`)
-      return response
-    } catch (err) {
-      const error = err as HttpClientError
-      if (error.status === 404) {
-        return {}
-      }
+type HttpClientType = HttpClient<SimpleCartResponseDTO, HttpClientError>
+type GatewayDTO = string | LoadActiveCartDTO
+export type CustomCartGateway = CartGateway<GatewayDTO, SimpleCartResponseDTO | HttpClientError> 
 
-      return {
-        error: true,
-        message: error.message || Error('[Gateway]: Error on getting active cart.')
-      }
-    }
-  }
-
+export default function customCartGateway(
+  httpClient: HttpClientType
+): CartGateway<GatewayDTO, SimpleCartResponseDTO | HttpClientError> {
   return {
     loadCart: () => {},
     updateCart: () => {},
     deleteCart: () => {},
     deleteFromCart: () => {},
-    loadActiveCart,
+    loadActiveCart: loadActiveCartGateway(httpClient),
   }
 }

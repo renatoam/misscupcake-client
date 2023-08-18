@@ -1,12 +1,13 @@
-import { CartGateway } from "@/app/layers/cartGateway.props";
-import { LoadActiveCartDTO } from "./loadActiveCartDTO";
-import { validate as isUUID } from "uuid";
 import { HttpClientError } from "@/app/layers/HttpClient";
-import { AppError } from "@/app/layers/Errors";
+import { CustomCartGateway } from "@/app/layers/cartGateway";
+import { AppError } from "@/app/layers/errors";
+import { validate as isUUID } from "uuid";
+import { LoadActiveCartDTO, SimpleCartResponseDTO } from "./loadActiveCartDTO";
 
-export type LoadActiveCartReturn = (loadActiveCartDTO: LoadActiveCartDTO) => Promise<unknown & AppError>
+export type LoadActiveCartReturn = 
+  (loadActiveCartDTO: LoadActiveCartDTO) => Promise<SimpleCartResponseDTO | Record<string, unknown> | AppError>
 
-export default function loadActiveCartUseCase(cartGateway: CartGateway): LoadActiveCartReturn {
+export default function loadActiveCartUseCase(cartGateway: CustomCartGateway): LoadActiveCartReturn {
   return async ({ accountId, guestId }: LoadActiveCartDTO) => {
     // those errors below should be handled in the domain
     if (!accountId && !guestId) {
@@ -32,9 +33,12 @@ export default function loadActiveCartUseCase(cartGateway: CartGateway): LoadAct
 
     try {
       const response = await cartGateway.loadActiveCart({ accountId, guestId })
-      return response
+
+      if ((response as HttpClientError).status === 404) return {}
+
+      return response as SimpleCartResponseDTO
     } catch (err) {
-      const error = err as HttpClientError
+      const error = err as Error
       return {
         error: true,
         message: error.message || '[Application]: Error on getting active cart.'

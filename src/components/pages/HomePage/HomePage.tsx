@@ -37,7 +37,7 @@ export default function HomePage() {
   const wrappingProps = editable && { style: { border: editable ? '1px solid' : '' } }
 
   if (isLoading) return <h1>IS LOADING...</h1>
-  if (!!error) return <h1>IS ERROR!!!</h1>
+  if (error) return <h1>IS ERROR!!!</h1>
 
   console.log({ data })
 
