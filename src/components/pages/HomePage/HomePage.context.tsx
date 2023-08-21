@@ -1,5 +1,5 @@
 import { API_URL } from "@/config";
-import axios from "axios";
+import httpClient from "@/config/httpClient";
 import { createContext, useContext, useMemo } from "react";
 import { useMutation, useQuery } from "react-query";
 
@@ -9,17 +9,17 @@ export const useHomePage = () => useContext(HomePageContext)
 
 export const HomePageContextProvider = ({ children }: any) => {
   const { data: products } = useQuery('homeProducts', async () => {
-    const response = await axios.get(`${API_URL}/products?price=lte%3A3&in_stock=eq%3Afalse`)
+    const response = await httpClient.get(`/products?price=lte%3A3&in_stock=eq%3Afalse`)
     return response.data
   })
   
   const { data: content } = useQuery('homeContent', async () => {
-    const response = await axios.get(`${API_URL}/content/pages?name=home`)
+    const response = await httpClient.get(`/content/pages?name=home`)
     return response.data
   })
 
   const mutation = useMutation({
-    mutationFn: async (data) => axios.patch(`${API_URL}/content/pages/description`, data)
+    mutationFn: async (data) => httpClient.patch(`/content/pages/description`, data)
   })
 
   const value = useMemo(() => ({ products, content, mutation }), [products, content])
