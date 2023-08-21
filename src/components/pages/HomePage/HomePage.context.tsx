@@ -1,4 +1,3 @@
-import { API_URL } from "@/config";
 import httpClient from "@/config/httpClient";
 import { createContext, useContext, useMemo } from "react";
 import { useMutation, useQuery } from "react-query";

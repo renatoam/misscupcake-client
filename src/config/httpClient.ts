@@ -8,6 +8,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use(config => {
   console.log('[token]: ', config.headers.Authorization ?? 'No auth configured.')
+  console.log(config.baseURL, { config })
 
   return config
 })
