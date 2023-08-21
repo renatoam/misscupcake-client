@@ -13,7 +13,7 @@ function Showcase(props: ShowcaseProps) {
             id={product.id}
             name={product.name}
             description={product.description}
-            image={product.image}
+            image={product.images[0]}
           />
         )
       })}
