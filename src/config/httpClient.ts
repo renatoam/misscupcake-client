@@ -6,6 +6,10 @@ const instance = axios.create({
   import.meta.env.VITE_API_BASE_URL
 })
 
+instance.defaults.baseURL = import.meta.env.NODE_ENV !== 'production' ?
+import.meta.env.VITE_API_LOCAL_BASE_URL :
+import.meta.env.VITE_API_BASE_URL
+
 instance.interceptors.request.use(config => {
   console.log('[token]: ', config.headers.Authorization ?? 'No auth configured.')
   console.log(config.baseURL, { config })
