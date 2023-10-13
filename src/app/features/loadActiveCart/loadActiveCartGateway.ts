@@ -7,10 +7,10 @@ export default function loadActiveCartGateway(
   return async (
     loadActiveCartDTO: LoadActiveCartDTO
   ): Promise<SimpleCartResponseDTO | HttpClientError> => {
-    const { accountId, guestId } = loadActiveCartDTO
+    const { customerId } = loadActiveCartDTO
     
     try {
-      const response = await httpClient.get(`/carts/active?accountId=${accountId}&guestId=${guestId}`)
+      const response = await httpClient.get(`/carts/active?customerId=${customerId}`)
       return response
     } catch (err) {
       const error = err as HttpClientError

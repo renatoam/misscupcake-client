@@ -8,31 +8,24 @@ export type LoadActiveCartReturn =
   (loadActiveCartDTO: LoadActiveCartDTO) => Promise<SimpleCartResponseDTO | Record<string, unknown> | AppError>
 
 export default function loadActiveCartUseCase(cartGateway: CustomCartGateway): LoadActiveCartReturn {
-  return async ({ accountId, guestId }: LoadActiveCartDTO) => {
+  return async ({ customerId }: LoadActiveCartDTO) => {
     // those errors below should be handled in the domain
-    if (!accountId && !guestId) {
+    if (!customerId) {
       return {
         error: true,
         message: 'Customer ID is required.'
       }
     }
-
-    if (accountId && !isUUID(accountId)) {
-      return {
-        error: true,
-        message: 'Account ID has invalid format.'
-      }
-    }
     
-    if (guestId && !isUUID(guestId)) {
+    if (customerId && !isUUID(customerId)) {
       return {
         error: true,
-        message: 'Guest ID has invalid format.'
+        message: 'Customer ID has invalid format.'
       }
     }
 
     try {
-      const response = await cartGateway.loadActiveCart({ accountId, guestId })
+      const response = await cartGateway.loadActiveCart({ customerId })
 
       if ((response as HttpClientError).status === 404) return {}
 

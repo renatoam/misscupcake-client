@@ -1,7 +1,7 @@
 import { AppError } from "@/app/layers/errors"
 import { useCallback, useEffect, useState } from "react"
 
-export default function useRequest(fetcher: any, options?: unknown) {
+export default function useRequest<Fetcher extends Function, Options>(fetcher: Fetcher, options?: Options) {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<AppError | null>(null)
   const [data, setData] = useState<any>(null)

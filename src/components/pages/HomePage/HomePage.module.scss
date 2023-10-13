@@ -1,4 +1,4 @@
-$container-width: max(144rem, 80vw);
+$container-width: 144rem;
 
 // main
 .main {
@@ -10,6 +10,9 @@ $container-width: max(144rem, 80vw);
 // Hero
 
 .hero {
+  margin-inline: auto;
+  max-inline-size: 144rem;
+
   &__container {
     display: grid;
     gap: 2.4rem;

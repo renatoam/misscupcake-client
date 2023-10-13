@@ -1,6 +1,5 @@
 export interface LoadActiveCartDTO {
-  accountId: string | null
-  guestId: string | null
+  customerId: string
 }
 
 export interface SimpleCartResponseDTO {

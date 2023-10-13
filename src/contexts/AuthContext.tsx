@@ -1,27 +1,27 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 import { v4 as uuid } from "uuid"
 
 export interface AuthContextProps {
-  guestId: string
+  customerId: string
 }
 
 export const AuthContext = createContext<AuthContextProps>({
-  guestId: ''
+  customerId: ''
 })
 
 export const useAuth = () => useContext(AuthContext)
 
 export const AuthContextProvider = ({ children }: any) => {
-  const storedId = localStorage.getItem('guestId') ?? ''
-  const [guestId, setGuestId] = useState(storedId)
+  const storedId = localStorage.getItem('customerId') ?? ''
+  const [customerId, setCustomerId] = useState(storedId)
   
   if (!storedId) {
     const newId = uuid()
-    localStorage.setItem('guestId', guestId)
-    setGuestId(newId)
+    localStorage.setItem('customerId', customerId)
+    setCustomerId(newId)
   }
 
-  const value = useMemo(() => ({ guestId }), [])
+  const value = useMemo(() => ({ customerId }), [])
 
   return (
     <AuthContext.Provider value={value}>

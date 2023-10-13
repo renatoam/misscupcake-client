@@ -6,5 +6,5 @@ export interface ServerProduct {
   id: string
   name: string
   description: string
-  images: string[]
+  image: string
 }

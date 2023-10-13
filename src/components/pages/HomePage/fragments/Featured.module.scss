@@ -2,6 +2,8 @@
   &__container {
     display: grid;
     gap: clamp(4rem, 3vw + .1rem, 6rem);
+    margin-inline: auto;
+    max-inline-size: 144rem;
     padding-block: 6.4rem;
     
     > h2 {
