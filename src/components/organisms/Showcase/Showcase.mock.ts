@@ -5,12 +5,12 @@ export const products: ServerProduct[] = [
     id: '40598405',
     description: 'lorem ipsum',
     name: 'Server Product',
-    images: ['image.jpg']
+    image: 'image.jpg'
   },
   {
     id: '40598405',
     description: 'lorem ipsum',
     name: 'Server Product',
-    images: ['image.jpg']
+    image: 'image.jpg'
   },
 ]
