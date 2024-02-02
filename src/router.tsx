@@ -7,7 +7,7 @@ const ProductDetailsPage = lazy(() => import("./components/pages/ProductDetailsP
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <><Outlet /></>,
+    element: <Outlet />,
     children: [
       {
         index: true,

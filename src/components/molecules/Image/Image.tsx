@@ -3,7 +3,7 @@ import useImage from "@/hooks/useImage";
 import styles from './Image.module.scss';
 import { ImageProps } from "./ImageProps";
 
-export default function Image(props: ImageProps) {
+export default function Image(props: Readonly<ImageProps>) {
   const {
     loading = 'lazy',
     decoding = 'async',
@@ -12,7 +12,6 @@ export default function Image(props: ImageProps) {
     sources,
     height,
     width,
-    blurOptions,
     server,
     ...rest
   } = props
@@ -28,7 +27,7 @@ export default function Image(props: ImageProps) {
   return (
     <Wrapper element="figure" aria-label="figure" className={styles.figure} {...figureProps}>
       <Placeholder />
-      <picture aria-label="picture">
+      <picture>
         {sources?.map(source => {
           return (
             <source

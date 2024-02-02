@@ -17,6 +17,7 @@ const useImage = (props: ImageProps) => {
   const baseURL = server ? '' : import.meta.env.VITE_BASE_IMAGE_URL
   const imageSource = server ? src : `${baseURL}/${blur[type ?? 'png']}${src}`
 
+  // This logic for handling blur in the images is just to work with the Cloudinary method
   function handleBlurOptions(): BlurOptions {
     if (blurOptions === 'none') {
       return initialBlurConfig

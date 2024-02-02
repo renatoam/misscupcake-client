@@ -1,29 +1,19 @@
 import { Button, Icon, Wrapper } from '@/components/atoms'
 import { Input } from '@/components/molecules'
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
-import { ChangeEvent, ForwardedRef, forwardRef, useState } from 'react'
+import { ForwardedRef, forwardRef } from 'react'
 import styles from './QuantityControl.module.scss'
 import { QuantityControlProps } from './QuantityControlProps'
  
 const QuantityControl = forwardRef((
   props: QuantityControlProps,
   ref: ForwardedRef<HTMLInputElement>) => {
-  const { inputProps = {} } = props
-  const { defaultValue, value, ...rest } = inputProps
-  const [inputValue, setInputValue] = useState(Number(value) || 0)
-
-  function increaseByOne() {
-    setInputValue(current => current + 1)
-  }
-  
-  function decreaseByOne() {
-    if (inputValue <= 0) return
-    setInputValue(current => current - 1)
-  }
-
-  function handleQuantity(event: ChangeEvent<HTMLInputElement>) {
-    setInputValue(Number(event.target.value))
-  }
+  const {
+    handleChange,
+    handleIncrease,
+    handleDecrease,
+    inputProps
+  } = props
   
   return (
     <Wrapper
@@ -35,7 +25,7 @@ const QuantityControl = forwardRef((
         variant="text"
         aria-label="minus"
         aria-controls="quantity"
-        onClick={decreaseByOne}
+        onClick={handleDecrease}
       >
         <Icon
           label="minus icon"
@@ -43,7 +33,7 @@ const QuantityControl = forwardRef((
         />
       </Button>
       <Input
-        {...rest}
+        {...inputProps}
         name="quantity"
         aria-label="quantity box"
         variant="invisible"
@@ -51,14 +41,13 @@ const QuantityControl = forwardRef((
         aria-live="assertive"
         id="quantity"
         ref={ref}
-        value={inputValue}
-        onChange={handleQuantity}
+        onChange={handleChange}
       />
       <Button
         variant="text"
         aria-label="plus"
         aria-controls="quantity"
-        onClick={increaseByOne}
+        onClick={handleIncrease}
       >
         <Icon
           label="minus icon"

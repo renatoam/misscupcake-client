@@ -2,9 +2,11 @@ import { Wrapper } from '@/components/atoms'
 import ProductCard from '../ProductCard'
 import styles from './Showcase.module.scss'
 import { ServerProduct, ShowcaseProps } from './ShowcaseProps'
+import { useAddToCartController } from '@/app/features/addToCart/useAddToCartController'
  
-function Showcase(props: ShowcaseProps) {
-  console.log(props.products)
+function Showcase(props: Readonly<ShowcaseProps>) {
+  const { addToCart, isLoading } = useAddToCartController()
+
   return (
     <Wrapper className={styles.showcase} aria-label="Products showcase">
       {props.products?.map((product: ServerProduct) => {
@@ -15,6 +17,8 @@ function Showcase(props: ShowcaseProps) {
             name={product.name}
             description={product.description}
             image={product.image}
+            loading={isLoading}
+            handleClick={addToCart}
           />
         )
       })}

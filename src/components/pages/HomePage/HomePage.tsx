@@ -79,6 +79,14 @@ export default function HomePage() {
             height={530}
             figureProps={{ className: styles.why__image }}
             type="avif"
+            // this style is for setting a blurred placeholder for the image
+            // this is a different method other than using the Cloudinary (or other CDN) method
+            style={{
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundImage: 'url(blurred url here)' // TO DO: https://csswizardry.com/2023/09/the-ultimate-lqip-lcp-technique/
+              // https://www.youtube.com/watch?v=345V2MU3E_w
+            }}
           />
           <Wrapper className={styles.why__text}>
             <Typography element="h2" className={styles.why__title}>The Simple,<br />Sweet Life</Typography>

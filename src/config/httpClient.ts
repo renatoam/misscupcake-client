@@ -1,19 +1,18 @@
-import axios from "axios";
+import Axios from "axios";
 
-const instance = axios.create({
+const axios = Axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL ??
-    import.meta.env.VITE_API_LOCAL_BASE_URL ?? 'http://localhost:3001/missapi/v1'
-  
+    import.meta.env.VITE_API_LOCAL_BASE_URL
 })
 
-instance.interceptors.request.use(config => {
+axios.interceptors.request.use(config => {
   console.log('[token]: ', config.headers.Authorization ?? 'No auth configured.')
   console.log(config.baseURL, { config })
 
   return config
 })
 
-instance.interceptors.response.use(config => {
+axios.interceptors.response.use(config => {
   return config
 }, errorConfig => {
   return {
@@ -22,4 +21,4 @@ instance.interceptors.response.use(config => {
   }
 })
 
-export default instance
+export default axios

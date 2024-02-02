@@ -4,21 +4,50 @@ import { Link } from 'react-router-dom'
 import QuantityControl from '../QuantityControl'
 import styles from './ProductCard.module.scss'
 import { ProductCardProps } from './ProductCardProps'
+import { ChangeEvent, useCallback, useState } from 'react'
  
-export default function ProductCard(props: ProductCardProps) {
+export default function ProductCard(props: Readonly<ProductCardProps>) {
   const {
     id,
     image,
     name,
     description,
+    loading,
+    handleClick
   } = props
+
+  const [value, setValue] = useState(1)
+
+  const handleButtonClick = useCallback(() => {
+    handleClick(id, value)
+  }, [id, value])
+
+  const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    let newValue = Number((event.target as HTMLInputElement).value)
+
+    if (newValue < 0 || Number.isNaN(newValue)) {
+      newValue = 0
+    }
+
+    if (newValue > 99) newValue = 99
+
+    setValue(newValue)
+  }, [setValue])
+
+  const handleIncrease = useCallback(() => {
+    setValue(value => value < 99 ? value + 1 : 99)
+  }, [setValue])
+  
+  const handleDecrease = useCallback(() => {
+    setValue(value => value > 0 ? value - 1 : value)
+  }, [setValue])
   
   return (
     <Wrapper
       className={styles.card}
       aria-labelledby="productName"
       aria-describedby="productDescription"
-      role="article"
+      element="article"
     >
       <Link to={`/product/${id}`}>
         <Image
@@ -40,8 +69,15 @@ export default function ProductCard(props: ProductCardProps) {
         </Typography>
       </Link>
       <Wrapper element="section" className={styles.card__actions}>
-        <QuantityControl />
-        <Button aria-label="add">Add to Cart</Button>
+        <QuantityControl
+          handleChange={handleChange}
+          handleDecrease={handleDecrease}
+          handleIncrease={handleIncrease}
+          inputProps={{ value }}
+        />
+        <Button onClick={handleButtonClick} aria-label="add">
+          {loading ? <div className={styles.loader} /> : 'Add to Cart'}
+        </Button>
       </Wrapper>
     </Wrapper>
   )
