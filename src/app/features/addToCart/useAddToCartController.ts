@@ -1,6 +1,6 @@
 import { CartItemsStateProps, getCart, setCart } from "@/states/cart"
 import { addToCartGateway } from "./addToCartGateway"
-import { BareProductDTO, SaveCartDTO } from "./cartDTOs"
+import { CartDTO } from "../../cart/interface/CartDTO"
 import { getAccount } from "@/states/account"
 import { CartItemProps } from "./cartItemEntity"
 import { useMutation } from "react-query"
@@ -8,9 +8,9 @@ import { useCallback } from "react"
 
 export const useAddToCartController = () => {
   // Add to Cart Strategy
-  const mutation = useMutation((saveCartDTO: SaveCartDTO) => addToCartGateway(saveCartDTO))
+  const mutation = useMutation((saveCartDTO: CartDTO.SaveCart) => addToCartGateway(saveCartDTO))
 
-  const createDTO = (product: BareProductDTO): SaveCartDTO => {
+  const createDTO = (product: CartDTO.BareProduct): CartDTO.SaveCart => {
     const cart = getCart()
     const account = getAccount()
   
@@ -19,7 +19,7 @@ export const useAddToCartController = () => {
     } // criar um strategy aqui pra quando tiver o update, ai a controller decide se chama update ou add
     
     // Add to Cart Strategy
-    const saveCartDTO: SaveCartDTO = {
+    const saveCartDTO: CartDTO.SaveCart = {
       accountId: account.id,
       products: [product]
     }

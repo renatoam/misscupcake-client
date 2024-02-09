@@ -5,14 +5,19 @@ import { queryClient } from './config';
 import { EditContextProvider } from './contexts/EditContext';
 import router from './router';
 import { AuthContextProvider } from './contexts/AuthContext';
+import { CartContainerProvider } from './app/cart/main/cart.container';
+import { getAccount } from './states/account';
 
 function App() {
+  const { id } = getAccount()
   return (
     <>
       <QueryClientProvider client={queryClient}>
         <AuthContextProvider>
           <EditContextProvider>
-            <RouterProvider router={router} />
+            <CartContainerProvider customerId={id}>
+              <RouterProvider router={router} />
+            </CartContainerProvider>
           </EditContextProvider>
         </AuthContextProvider>
       </QueryClientProvider>

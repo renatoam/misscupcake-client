@@ -1,4 +1,4 @@
-import httpClient from "@/config/httpClient";
+import httpClient from "@/app/shared/config/axiosClientConfig";
 import { createContext, useContext, useMemo } from "react";
 import { useMutation, useQuery } from "react-query";
 

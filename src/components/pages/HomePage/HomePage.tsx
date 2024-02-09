@@ -7,14 +7,14 @@ import { lazy } from 'react';
 import { useHomePage } from './HomePage.context';
 import styles from "./HomePage.module.scss";
 import LazyLoader from './lazy';
-import useLoadActiveCart from '@/app/features/loadActiveCart/loadActiveCartController';
+import { useActiveCart } from '@/app/cart/main/cart.container';
 
 const Featured = lazy(() => import('./fragments/Featured'))
 
 export default function HomePage() {
   const { editable } = useEditContext()
   const { products, content, mutation } = useHomePage()
-  const { data, error, isLoading } = useLoadActiveCart()
+  const { data, error, isLoading } = useActiveCart()
 
   const heroContent = content?.sections?.find((sec: any) => {
     return sec.name === 'hero'
