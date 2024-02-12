@@ -11,7 +11,7 @@ export default function useLoadActiveController(
   >
 ) {  
   return ({ customerId }: CartDTO.LoadActiveCart) => {
-    const { data, isLoading, error } = useQuery({
+    const { data: response, isLoading, error } = useQuery({
       queryKey: 'loadActive',
       queryFn: async () => useCase({ customerId })
     })
@@ -19,7 +19,7 @@ export default function useLoadActiveController(
     return {
       error,
       isLoading,
-      data
+      cart: response?.data
     }
   }
 }

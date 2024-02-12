@@ -12,4 +12,6 @@ export namespace CartProtocols {
 
   export type CreateResponseData = SimpleCartProps
   export type CreateResponse = Promise<HttpClientResponse<CreateResponseData>>
+
+  export type DeleteResponse = Promise<HttpClientResponse<void>>
 }

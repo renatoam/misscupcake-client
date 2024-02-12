@@ -14,7 +14,7 @@ const Featured = lazy(() => import('./fragments/Featured'))
 export default function HomePage() {
   const { editable } = useEditContext()
   const { products, content, mutation } = useHomePage()
-  const { data, error, isLoading } = useActiveCart()
+  const { cart, error, isLoading } = useActiveCart()
 
   const heroContent = content?.sections?.find((sec: any) => {
     return sec.name === 'hero'
@@ -39,12 +39,12 @@ export default function HomePage() {
   if (isLoading) return <h1>IS LOADING...</h1>
   if (error) return <h1>IS ERROR!!!</h1>
 
-  console.log({ data })
+  console.log({ cart })
 
   return (
     <Wrapper element="main" className={styles.main}>
       <Header />
-      <Wrapper role="banner" className={styles.hero}>
+      <Wrapper element="header" className={styles.hero}>
         <Container className={styles.hero__container}>
           <Wrapper className={styles.hero__text}>
             <Typography element="h1" className={styles.hero__title}>{hero?.title.split(' ')[0]}<br />{hero?.title.split(' ')[1]}</Typography>

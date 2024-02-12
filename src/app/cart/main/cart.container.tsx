@@ -1,22 +1,21 @@
-import useLoadActiveController from "@/app/cart/infrastructure/controller/loadActive.controller";
 import loadActiveCartUseCase from "@/app/cart/application/loadActive.useCase";
+import useLoadActiveController from "@/app/cart/infrastructure/controller/loadActive.controller";
 import { AxiosHttpClient } from "@/app/shared/infrastructure/axiosHttpClient";
-import { HttpClientResponse } from "@/app/shared/interface/HttpClient";
 import { PropsWithChildren, createContext, useContext } from "react";
-import { cartGateway } from "../infrastructure/gateway/cart.gateway";
 import { SimpleCartProps } from "../domain/entities/Cart";
+import { cartGateway } from "../infrastructure/gateway/cart.gateway";
 import { CartDTO } from "../interface/CartDTO";
 
 export interface ActiveCartData {
   error: unknown;
   isLoading: boolean;
-  data: HttpClientResponse<SimpleCartProps> | undefined;
+  cart: SimpleCartProps | undefined;
 }
 
 export const CartContainer = createContext<ActiveCartData>({
   error: undefined,
   isLoading: false,
-  data: undefined
+  cart: undefined
 })
 
 export const useActiveCart = () => useContext(CartContainer)

@@ -1,8 +1,9 @@
-import { validate as isUUID } from "uuid"; // remover depois, trocar pra Identifier entity
+import calculateTotal from "../services/calculateTotal";
+import Identifier from "../valueObjects/Identifier";
 import { SimpleCartItemProps } from "./CartItem";
 
 export interface SimpleCartProps {
-  cartId: string
+  id: string
   accountId: string
   subtotal: number
   total: number
@@ -17,34 +18,21 @@ export class Cart {
   }
 
   public static create(props: SimpleCartProps): Cart {
-    const { cartId, accountId, total, items } = props
+    const { id: cart, accountId: account, total, items } = props
+    const cartId = new Identifier(cart)
+    const accountId = new Identifier(account)
+    const calculatedTotal = calculateTotal(total, items)
 
-    if (!cartId || !accountId) {
-      throw new Error('Cart ID and Account ID are required.')
-    }
-
-    if (!accountId) {
-      throw new Error('Customer ID is required.')
-    }
-    
-    if (accountId && !isUUID(accountId)) {
-      throw new Error('Customer ID has invalid format.')
-    }
-
-    let calculatedTotal = 0
-
-    if (!total) {
-      calculatedTotal = items.reduce((acc, current) => {
-        const sum = acc + current.total
-        return sum
-      }, 0)
-    }
-
-    return new Cart({ ...props, total: calculatedTotal })
+    return new Cart({
+      ...props,
+      id: cartId.value,
+      accountId: accountId.value,
+      total: calculatedTotal
+    })
   }
 
   public get id(): string {
-    return this.props.cartId
+    return this.props.id
   }
 
   public get subtotal(): number {

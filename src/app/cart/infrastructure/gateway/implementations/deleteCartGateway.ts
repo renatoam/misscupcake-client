@@ -5,7 +5,7 @@ import { HttpClient } from "@/app/shared/interface/HttpClient";
 
 export const deleteCartGateway = (_httpClient: HttpClient): Gateway<
   CartDTO.DeleteCart,
-  CartProtocols.CreateResponse
+  CartProtocols.DeleteResponse
 > => async (_dto) => {
   return {
     error: true,

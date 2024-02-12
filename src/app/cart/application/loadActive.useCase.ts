@@ -19,7 +19,7 @@ export default function loadActiveCartUseCase(cartGateway: CartGateway): CartUse
       try {
         const incomingCart = response.data
         const cart: SimpleCartProps = {
-          cartId: incomingCart.id,
+          id: incomingCart.id,
           accountId: customerId,
           subtotal: incomingCart.subtotal,
           total: incomingCart.total,
