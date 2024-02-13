@@ -1,15 +1,16 @@
 import { Button, Container, Icon, Wrapper } from '@/components/atoms';
-import { useEditContext } from '@/contexts/EditContext';
+import { useAuth } from '@/states/authentication';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import MainMenu from '../MainMenu';
 import styles from './Header.module.scss';
  
 export default function Header() {
-  const { editable, setEditable } = useEditContext()
-  const editButtonText = editable ? 'Save' : 'Edit'
+  const [auth, setAuth] = useAuth()
+  const loginButtonText = auth.isAuthenticated ? 'Logout' : 'Login'
 
-  function handleEditing() {
-    setEditable(!editable)
+  function handleLogin() {
+    console.log({ isAuthenticated: auth.isAuthenticated })
+    setAuth({ isAuthenticated: !auth.isAuthenticated})
   }
   
   return (
@@ -17,7 +18,7 @@ export default function Header() {
       <Container className={styles.header__container}>
         <MainMenu />
         <Wrapper className={styles.header__actions}>
-          <Button onClick={handleEditing}>{editButtonText}</Button>
+          <Button onClick={handleLogin}>{loginButtonText}</Button>
           <Icon
             label="cart"
             icon={faCartShopping}

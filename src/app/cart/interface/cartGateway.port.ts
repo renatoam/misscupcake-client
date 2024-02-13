@@ -1,6 +1,6 @@
-import { Gateway } from "../domain/ports/Gateway"
-import { CartDTO } from "./CartDTO"
-import { CartProtocols } from "./CartProtocols"
+import { Gateway } from "../domain/ports/gateway.port"
+import { CartDTO } from "./cart.dto"
+import { CartProtocols } from "./cart.protocols"
 
 export interface CartGateway {
   load: Gateway<CartDTO.LoadCart, CartProtocols.LoadResponse>

@@ -1,8 +1,8 @@
 import { HttpClient } from "@/app/shared/interface/HttpClient";
-import { Gateway } from "../../../domain/ports/Gateway";
-import { CartProtocols } from "../../../interface/CartProtocols";
-import { Cart, SimpleCartProps } from "@/app/cart/domain/entities/Cart";
-import { CartDTO } from "@/app/cart/interface/CartDTO";
+import { Gateway } from "../../../domain/ports/gateway.port";
+import { CartProtocols } from "../../../interface/cart.protocols";
+import { Cart, SimpleCartProps } from "@/app/cart/domain/entities/cart.entity";
+import { CartDTO } from "@/app/cart/interface/cart.dto";
 
 export const loadActiveCartGateway = (httpClient: HttpClient): Gateway<
   CartDTO.LoadActiveCart,

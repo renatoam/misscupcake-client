@@ -16,7 +16,7 @@ export class AxiosHttpClient implements HttpClient {
       return {
         data: response.data,
         status: response.status,
-        message: '',
+        message: 'Request successfully completed.',
         error: false
       }
     } catch (err) {

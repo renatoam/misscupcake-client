@@ -1,6 +1,6 @@
 import { CartItemsStateProps, getCart, setCart } from "@/states/cart"
 import { addToCartGateway } from "./addToCartGateway"
-import { CartDTO } from "../../cart/interface/CartDTO"
+import { CartDTO } from "../../cart/interface/cart.dto"
 import { getAccount } from "@/states/account"
 import { CartItemProps } from "./cartItemEntity"
 import { useMutation } from "react-query"

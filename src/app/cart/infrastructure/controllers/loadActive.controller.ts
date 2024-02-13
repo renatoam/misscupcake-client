@@ -1,8 +1,8 @@
-import { UseCase } from "@/app/cart/domain/ports/UseCase";
-import { CartProtocols } from "@/app/cart/interface/CartProtocols";
+import { UseCase } from "@/app/cart/domain/ports/useCase.port";
+import { CartProtocols } from "@/app/cart/interface/cart.protocols";
 import { useQuery } from "react-query";
-import { SimpleCartProps } from "../../domain/entities/Cart";
-import { CartDTO } from "../../interface/CartDTO";
+import { SimpleCartProps } from "../../domain/entities/cart.entity";
+import { CartDTO } from "../../interface/cart.dto";
 
 export default function useLoadActiveController(
   useCase: UseCase<

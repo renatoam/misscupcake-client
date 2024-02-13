@@ -1,5 +1,5 @@
 import { HttpClientResponse } from "@/app/shared/interface/HttpClient"
-import { Cart, SimpleCartProps } from "../domain/entities/Cart"
+import { Cart, SimpleCartProps } from "../domain/entities/cart.entity"
 
 export namespace CartProtocols {
   export type LoadResponseData = SimpleCartProps

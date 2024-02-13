@@ -1,7 +1,7 @@
-import { CartUseCase } from "@/app/cart/interface/CartUseCase";
-import { SimpleCartProps } from "../domain/entities/Cart";
-import { CartDTO } from "../interface/CartDTO";
-import { CartGateway } from "../interface/CartGateway";
+import { CartUseCase } from "@/app/cart/interface/cartUseCase.port";
+import { SimpleCartProps } from "../domain/entities/cart.entity";
+import { CartDTO } from "../interface/cart.dto";
+import { CartGateway } from "../interface/cartGateway.port";
 
 export default function loadActiveCartUseCase(cartGateway: CartGateway): CartUseCase.LoadActive {
   return async ({ customerId }: CartDTO.LoadActiveCart) => {

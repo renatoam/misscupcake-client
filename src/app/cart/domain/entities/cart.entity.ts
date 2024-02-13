@@ -1,6 +1,6 @@
-import calculateTotal from "../services/calculateTotal";
-import Identifier from "../valueObjects/Identifier";
-import { SimpleCartItemProps } from "./CartItem";
+import calculateTotal from "../services/calculateTotal.service";
+import Identifier from "../valueObjects/identifier.vo";
+import { SimpleCartItemProps } from "./cartItem.entity";
 
 export interface SimpleCartProps {
   id: string

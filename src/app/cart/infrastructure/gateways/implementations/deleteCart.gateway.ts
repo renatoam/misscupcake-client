@@ -1,6 +1,6 @@
-import { Gateway } from "@/app/cart/domain/ports/Gateway";
-import { CartDTO } from "@/app/cart/interface/CartDTO";
-import { CartProtocols } from "@/app/cart/interface/CartProtocols";
+import { Gateway } from "@/app/cart/domain/ports/gateway.port";
+import { CartDTO } from "@/app/cart/interface/cart.dto";
+import { CartProtocols } from "@/app/cart/interface/cart.protocols";
 import { HttpClient } from "@/app/shared/interface/HttpClient";
 
 export const deleteCartGateway = (_httpClient: HttpClient): Gateway<

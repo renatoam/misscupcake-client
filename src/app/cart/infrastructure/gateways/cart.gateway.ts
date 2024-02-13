@@ -1,7 +1,6 @@
 import { HttpClient } from "@/app/shared/interface/HttpClient";
-import { createCartGateway, deleteCartGateway, loadActiveCartGateway, updateCartGateway } from "./implementations";
-import { loadCartGateway } from "./implementations/loadCartGateway";
-import { CartGateway } from "../../interface/CartGateway";
+import { createCartGateway, deleteCartGateway, loadActiveCartGateway, loadCartGateway, updateCartGateway } from "./implementations";
+import { CartGateway } from "../../interface/cartGateway.port";
 
 export const cartGateway = (httpClient: HttpClient): CartGateway => {
   return {

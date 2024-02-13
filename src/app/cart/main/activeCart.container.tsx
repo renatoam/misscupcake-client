@@ -1,10 +1,10 @@
 import loadActiveCartUseCase from "@/app/cart/application/loadActive.useCase";
-import useLoadActiveController from "@/app/cart/infrastructure/controller/loadActive.controller";
+import useLoadActiveController from "@/app/cart/infrastructure/controllers/loadActive.controller";
 import { AxiosHttpClient } from "@/app/shared/infrastructure/axiosHttpClient";
 import { PropsWithChildren, createContext, useContext } from "react";
-import { SimpleCartProps } from "../domain/entities/Cart";
-import { cartGateway } from "../infrastructure/gateway/cart.gateway";
-import { CartDTO } from "../interface/CartDTO";
+import { SimpleCartProps } from "../domain/entities/cart.entity";
+import { cartGateway } from "../infrastructure/gateways/cart.gateway";
+import { CartDTO } from "../interface/cart.dto";
 
 export interface ActiveCartData {
   error: unknown;

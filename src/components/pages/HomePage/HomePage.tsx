@@ -7,7 +7,7 @@ import { lazy } from 'react';
 import { useHomePage } from './HomePage.context';
 import styles from "./HomePage.module.scss";
 import LazyLoader from './lazy';
-import { useActiveCart } from '@/app/cart/main/cart.container';
+import { useActiveCart } from '@/app/cart/main/activeCart.container';
 
 const Featured = lazy(() => import('./fragments/Featured'))
 

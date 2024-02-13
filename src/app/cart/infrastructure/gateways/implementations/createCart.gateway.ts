@@ -1,7 +1,7 @@
-import { Gateway } from "@/app/cart/domain/ports/Gateway";
-import { CartProtocols } from "../../../interface/CartProtocols";
+import { Gateway } from "@/app/cart/domain/ports/gateway.port";
+import { CartProtocols } from "../../../interface/cart.protocols";
 import { HttpClient } from "@/app/shared/interface/HttpClient";
-import { CartDTO } from "@/app/cart/interface/CartDTO";
+import { CartDTO } from "@/app/cart/interface/cart.dto";
 
 export const createCartGateway = (_httpClient: HttpClient): Gateway<
   CartDTO.AddToCart,

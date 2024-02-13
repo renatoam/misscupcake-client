@@ -1,5 +1,5 @@
 import httpClient from "@/app/shared/config/axiosClientConfig"
-import { CartDTO } from "../../cart/interface/CartDTO"
+import { CartDTO } from "../../cart/interface/cart.dto"
 import { CartProps, cart } from "./cartEntity"
 
 export async function addToCartGateway(saveCartDTO: CartDTO.SaveCart): Promise<CartProps> {
