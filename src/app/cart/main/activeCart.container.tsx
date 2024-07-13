@@ -1,15 +1,15 @@
 import loadActiveCartUseCase from "@/app/cart/application/loadActive.useCase";
 import useLoadActiveController from "@/app/cart/infrastructure/controllers/loadActive.controller";
 import { AxiosHttpClient } from "@/app/shared/infrastructure/axiosHttpClient";
+import { useAuth } from "@/contexts/AuthContext";
 import { PropsWithChildren, createContext, useContext } from "react";
 import { SimpleCartProps } from "../domain/entities/cart.entity";
 import { cartGateway } from "../infrastructure/gateways/cart.gateway";
-import { CartDTO } from "../interface/cart.dto";
 
 export interface ActiveCartData {
   error: unknown;
   isLoading: boolean;
-  cart: SimpleCartProps | undefined;
+  cart?: SimpleCartProps;
 }
 
 export const CartContainer = createContext<ActiveCartData>({
@@ -20,8 +20,8 @@ export const CartContainer = createContext<ActiveCartData>({
 
 export const useActiveCart = () => useContext(CartContainer)
 
-export const CartContainerProvider = (props: PropsWithChildren<CartDTO.LoadActiveCart>) => {
-  const { customerId } = props
+export const CartContainerProvider = (props: PropsWithChildren) => {
+  const { customerId } = useAuth()
   const httpClient = new AxiosHttpClient()
   const gateway = cartGateway(httpClient)
   const loadActiveUseCase = loadActiveCartUseCase(gateway)

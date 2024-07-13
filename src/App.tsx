@@ -6,16 +6,14 @@ import { EditContextProvider } from './contexts/EditContext';
 import router from './router';
 import { AuthContextProvider } from './contexts/AuthContext';
 import { CartContainerProvider } from './app/cart/main/activeCart.container';
-import { getAccount } from './states/account';
 
 function App() {
-  const { id } = getAccount()
   return (
     <>
       <QueryClientProvider client={queryClient}>
         <AuthContextProvider>
           <EditContextProvider>
-            <CartContainerProvider customerId={id}>
+            <CartContainerProvider>
               <RouterProvider router={router} />
             </CartContainerProvider>
           </EditContextProvider>
