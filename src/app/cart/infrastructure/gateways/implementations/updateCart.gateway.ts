@@ -4,7 +4,7 @@ import { CartDTO } from "@/app/cart/interface/cart.dto";
 import { HttpClient } from "@/app/shared/interface/HttpClient";
 
 export const updateCartGateway = (_httpClient: HttpClient): Gateway<
-  CartDTO.SaveCart,
+  CartDTO.UpdateCart,
   CartProtocols.CreateResponse
 > => async (_dto) => {
   return {

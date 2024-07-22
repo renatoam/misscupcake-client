@@ -30,7 +30,7 @@ export default function loadActiveCartUseCase(cartGateway: CartGateway): CartUse
           ...response,
           data: cart
         }
-      } catch (err) {
+      } catch {
         return {
           ...response,
           data: undefined

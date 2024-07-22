@@ -9,5 +9,8 @@ export const cartGateway = (httpClient: HttpClient): CartGateway => {
     create: createCartGateway(httpClient),
     delete: deleteCartGateway(httpClient),
     loadActive: loadActiveCartGateway(httpClient),
+    createLocal: () => {
+      throw new Error('Method not implemented.')
+    }
   }
 }

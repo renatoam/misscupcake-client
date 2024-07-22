@@ -7,14 +7,16 @@ import { lazy } from 'react';
 import { useHomePage } from './HomePage.context';
 import styles from "./HomePage.module.scss";
 import LazyLoader from './lazy';
-import { useActiveCart } from '@/app/cart/main/activeCart.container';
+// import { useActiveCart } from '@/app/cart/main/activeCart.container';
 
 const Featured = lazy(() => import('./fragments/Featured'))
 
 export default function HomePage() {
   const { editable } = useEditContext()
   const { products, content, mutation } = useHomePage()
-  const { cart, error, isLoading } = useActiveCart()
+  
+  // we don't need this hook here because home loading is independent of it
+  // const { cart, error, isLoading } = useActiveCart()
 
   const heroContent = content?.sections?.find((sec: any) => {
     return sec.name === 'hero'
@@ -35,11 +37,6 @@ export default function HomePage() {
   }
 
   const wrappingProps = editable && { style: { border: editable ? '1px solid' : '' } }
-
-  if (isLoading) return <h1>IS LOADING...</h1>
-  if (error) return <h1>IS ERROR!!!</h1>
-
-  console.log({ cart })
 
   return (
     <Wrapper element="main" className={styles.main}>
