@@ -6,7 +6,7 @@ export default function Button(props: ButtonProps) {
   const variations = !variant || variant === 'default' ? '' : styles[variant]
   
   return (
-    <button className={`${styles.button} ${variations}`} {...rest}>
+    <button className={`${styles.button} ${variations} ${className}`} {...rest}>
       {children}
     </button>
   )

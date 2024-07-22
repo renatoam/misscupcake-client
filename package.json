@@ -42,10 +42,13 @@
     "@types/testing-library__jest-dom": "^5.14.5",
     "@types/uuid": "^9.0.2",
     "@vitejs/plugin-react-swc": "^3.5.0",
+    "autoprefixer": "^10.4.19",
     "jotai-devtools": "^0.7.1",
     "jsdom": "^21.1.1",
     "plop": "^3.1.2",
+    "postcss": "^8.4.39",
     "sass": "^1.58.1",
+    "tailwindcss": "^3.4.6",
     "typescript": "^4.9.3",
     "vite": "^4.1.0",
     "vitest": "^0.29.7"
