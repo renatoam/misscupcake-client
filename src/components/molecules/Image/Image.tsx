@@ -13,6 +13,7 @@ export default function Image(props: Readonly<ImageProps>) {
     height,
     width,
     server,
+    className = '',
     ...rest
   } = props
 
@@ -48,6 +49,7 @@ export default function Image(props: Readonly<ImageProps>) {
           width={width}
           loading={loading}
           decoding={decoding}
+          className={className}
         />
       </picture>
       {caption && <figcaption>{caption}</figcaption>}

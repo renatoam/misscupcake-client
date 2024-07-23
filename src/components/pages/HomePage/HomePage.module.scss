@@ -1,53 +1,5 @@
 $container-width: 144rem;
 
-// main
-.main {
-  background-image: linear-gradient(to bottom, #F7CFDA, #F7CFDA 60%, #EFFBE2, #EFFBE2 50%);
-  padding-block: 1.6rem;
-  padding-inline: 1.6rem;
-}
-
-// Hero
-
-.hero {
-  margin-inline: auto;
-  max-inline-size: 144rem;
-
-  &__container {
-    display: grid;
-    gap: 2.4rem;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-    padding-block-start: 4rem;
-  }
-
-  &__text {
-    padding-block-start: 5.6rem;
-  }
-
-  &__title {
-    font-size: clamp(3.2rem, 5vw + .1rem, 12rem);
-    line-height: 1.2;
-    margin-block-end: 4rem;
-  }
-
-  &__button {
-    display: grid;
-    margin-block: 4rem;
-    min-inline-size: 25rem;
-    place-content: center;
-  }
-
-  &__image {
-    img {
-      @media (width < 37.5em) {
-        height: auto;
-        margin-inline-start: auto;
-        width: 80%;
-      }
-    }
-  }
-}
-
 // Why Section
 
 .why {

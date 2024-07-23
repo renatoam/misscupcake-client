@@ -4,20 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-display: swap;
-  font-family: 'Unbounded';
-  font-weight: bolder;
-  src: url('https://res.cloudinary.com/otaner/raw/upload/v1677083791/fonts/unbounded-variable.woff2') format('woff2');
-  unicode-range: U+20-24F;
+:root {
+  --font-family: 'Montserrat', sans-serif;
 }
 
 body {
-  background-color: #F7CFDA;
-  color: #642C99;
-  font-family: 'Montserrat', sans-serif;
-  font-size: clamp(1.6rem, 2vw + .1rem, 2.2rem);
-  overflow-x: hidden;
+  @apply bg-pink text-purple overflow-x-hidden font-sans antialiased;
 }
 
 .i-icon {

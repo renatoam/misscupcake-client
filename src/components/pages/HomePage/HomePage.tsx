@@ -39,12 +39,12 @@ export default function HomePage() {
   const wrappingProps = editable && { style: { border: editable ? '1px solid' : '' } }
 
   return (
-    <Wrapper element="main" className={styles.main}>
+    <Wrapper element="main" className="p-6 bg-gradient-to-b from-pink from-60% to-lime to-50%">
       <Header />
-      <Wrapper element="header" className={styles.hero}>
-        <Container className={styles.hero__container}>
-          <Wrapper className={styles.hero__text}>
-            <Typography element="h1" className={styles.hero__title}>{hero?.title.split(' ')[0]}<br />{hero?.title.split(' ')[1]}</Typography>
+      <Wrapper element="header" className="mx-auto max-w-[2300px]">
+        <Container className="grid gap-9 pt-16 grid-cols-[repeat(auto-fit,minmax(30rem,1fr))]">
+          <Wrapper className="pt-20">
+            <Typography element="h1" className="mb-16 leading-tight text-[clamp(3.2rem,5vw+.1rem,12rem)]">{hero?.title.split(' ')[0]}<br />{hero?.title.split(' ')[1]}</Typography>
             <Typography
               contentEditable={editable}
               onBlur={handleEditing}
@@ -54,7 +54,7 @@ export default function HomePage() {
             >
               {hero?.description}
             </Typography>
-            <Button className={styles.hero__button}>Shop now</Button>
+            <Button className="grid my-16 min-w-96 place-content-center">Shop now</Button>
           </Wrapper>
           <Image
             sources={sources}
@@ -62,7 +62,7 @@ export default function HomePage() {
             alt={heroFallback.alt}
             width={530}
             height={710}
-            figureProps={{ className: styles.hero__image }}
+            className="max-[37.5em]:h-auto max-[37.5em]:ml-auto max-[37.5em]:w-4/5"
             blurOptions="none"
           />
         </Container>
