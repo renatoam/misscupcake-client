@@ -17,12 +17,15 @@ export default {
       greyPurple: '#9B82B4',
     },
     fontSize: {
-      base: 'clamp(1.6rem, 2vw + .1rem, 2.2rem)',
+      base: '1.25rem',
+      xs: '0.75rem',
       sm: '1rem',
       md: '1.5rem',
-      lg: '2.5rem',
-      xl: '4rem',
-      '2xl': '5rem'
+      lg: '2rem',
+      xl: '2.25rem',
+      '2xl': '3rem',
+      'display2': '5.625rem',
+      'display1': '7.5rem',
     },
     screens: {
       'xs': '375px',

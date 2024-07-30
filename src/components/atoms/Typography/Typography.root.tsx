@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react'
-import styles from './Typography.module.scss'
-import { TypographyProps } from './TypographyProps'
+import styles from './styles.module.scss'
+import { TypographyProps } from './Typography.props'
  
 export default function Typography(props: PropsWithChildren<TypographyProps>) {
   const {

@@ -3,13 +3,68 @@
     max-inline-size: 50ch;
   }
 
-  &.h1,
-  &.h2,
-  &.h3,
-  &.h4,
-  &.h5,
-  &.h6 {
+  &[class*="title-"] {
     font-family: 'Unbounded', system-ui, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: bolder;
+  }
+
+  &.title-1 {
+    @apply text-display1;
+  }
+
+  &.title-2 {
+    @apply text-display2;
+  }
+
+  &.title-3 {
+    @apply text-2xl;
+  }
+
+  &.title-4 {
+    @apply text-xl;
+  }
+
+  &.title-5 {
+    @apply text-lg;
+  }
+
+  &.title-6 {
+    @apply text-md;
+  }
+
+  &.subtitle {
+    @apply text-md;
+  }
+
+  &.body-large {
+    @apply text-md;
+  }
+
+  &.body-normal {
+    @apply text-base;
+  }
+
+  &.body-small {
+    @apply text-sm;
+  }
+
+  &.body-tiny {
+    @apply text-xs;
+  }
+
+  &.label {
+    @apply text-base;
+  }
+
+  &.value {
+    @apply text-md;
+  }
+
+  &.message-title {
+    @apply text-sm;
+  }
+
+  &.message-body {
+    @apply text-sm;
   }
 }

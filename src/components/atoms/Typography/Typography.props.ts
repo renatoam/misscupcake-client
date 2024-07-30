@@ -6,6 +6,21 @@ export interface TypographyProps extends Partial<NativeText> {
   title?: string
   contentEditable?: boolean | "inherit"
   onBlur?: CustomBlur
+  variant?: 'title-1' |
+  'title-2' |
+  'title-3' |
+  'title-4' |
+  'title-5' |
+  'title-6' |
+  'subtitle' |
+  'body-large' |
+  'body-normal' |
+  'body-small' |
+  'body-tiny' |
+  'label' |
+  'value' |
+  'message-title' |
+  'message-body'
 }
 
 export type CustomBlur = FocusEventHandler<HTMLHeadingElement> &

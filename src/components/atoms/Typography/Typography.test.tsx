@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import Typography from './Typography'
+import Typography from './Typography.root'
 
 describe('Typography', () => {
   it('should render the right text', () => {
