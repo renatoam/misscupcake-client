@@ -1,7 +1,7 @@
 import { FocusEventHandler } from "react"
 
 export interface TypographyProps extends Partial<NativeText> {
-  element: keyof Pick<HTMLElementTagNameMap, 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'label' | 'p' | 'span'>
+  element?: keyof Pick<HTMLElementTagNameMap, 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'label' | 'p' | 'span'>
   className?: string
   title?: string
   contentEditable?: boolean | "inherit"
@@ -12,7 +12,7 @@ export interface TypographyProps extends Partial<NativeText> {
   'title-4' |
   'title-5' |
   'title-6' |
-  'subtitle' |
+  'subheader' |
   'body-large' |
   'body-normal' |
   'body-small' |

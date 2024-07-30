@@ -1,5 +1,13 @@
 @use "./reset";
 
+@font-face {
+  font-display: swap;
+  font-family: 'Unbounded';
+  font-weight: bolder;
+  src: url('https://res.cloudinary.com/otaner/raw/upload/v1677083791/fonts/unbounded-variable.woff2') format('woff2');
+  unicode-range: U+20-24F;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
